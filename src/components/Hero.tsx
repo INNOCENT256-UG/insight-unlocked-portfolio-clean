@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { profile } from "@/data/profile";
 import { Reveal } from "./Reveal";
 import { TechStrip } from "./TechIcons";
-import portrait from "@/assets/INNOCENT-portrait.jpg.asset.json";
+import portrait from "@/assets/innocent-portrait.jpg.asset.json";
 
 const FALLBACK_INITIALS = profile.name.split(" ").map((n) => n[0]).join("").slice(0, 2).toUpperCase();
 const WORKFLOW = ["Data", "Analysis", "Insight", "Decision"] as const;
