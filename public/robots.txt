@@ -1,6 +1,4 @@
-# Allow all major crawlers to index every public page.
-# Once a custom domain is assigned, add an absolute Sitemap URL here, e.g.:
-# Sitemap: https://www.example.com/sitemap.xml
+﻿# Allow major crawlers to index public pages.
 
 User-agent: Googlebot
 Allow: /
@@ -16,3 +14,5 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+Sitemap: https://innocent-watsala.vercel.app/sitemap.xml
