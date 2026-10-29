@@ -8,6 +8,7 @@ import { SelectedProjects } from "@/components/resume/SelectedProjects";
 import { ResumeFooter } from "@/components/resume/ResumeFooter";
 import { certifications, coreCompetencies, education, professionalSummary } from "@/data/resume";
 import { skillGroups } from "@/data/skills";
+import { absoluteUrl, socialMeta } from "@/lib/site";
 
 const title = "Resume — Data Analyst | Innocent";
 const description =
@@ -18,15 +19,9 @@ export const Route = createFileRoute("/resume")({
     meta: [
       { title },
       { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "profile" },
-      { property: "og:url", content: "/resume" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
+      ...socialMeta({ title, description, path: "/resume", type: "profile" }),
     ],
-    links: [{ rel: "canonical", href: "/resume" }],
+    links: [{ rel: "canonical", href: absoluteUrl("/resume") }],
     scripts: [
       jsonLdScript(webPageSchema({ path: "/resume", name: title, description, type: "WebPage" })),
     ],

@@ -14,6 +14,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { jsonLdScript, organizationSchema, websiteSchema } from "@/lib/structured-data";
+import { SITE_URL, SOCIAL_IMAGE_URL } from "@/lib/site";
 
 function NotFoundComponent() {
   return (
@@ -96,7 +97,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Innocent Watsala" },
+      { property: "og:url", content: SITE_URL },
+      { property: "og:image", content: SOCIAL_IMAGE_URL },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: "Innocent Watsala — Data Analyst" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: SOCIAL_IMAGE_URL },
     ],
     scripts: [jsonLdScript(organizationSchema), jsonLdScript(websiteSchema)],
     links: [

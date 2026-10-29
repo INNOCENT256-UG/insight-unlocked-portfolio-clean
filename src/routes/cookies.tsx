@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { jsonLdScript, webPageSchema } from "@/lib/structured-data";
 import { LegalBody } from "@/components/LegalPage";
 import { PageHeader } from "@/components/PageHeader";
+import { absoluteUrl, socialMeta } from "@/lib/site";
 
 const title = "Cookies Policy — Innocent, Data Analyst";
 const description =
@@ -12,12 +13,9 @@ export const Route = createFileRoute("/cookies")({
     meta: [
       { title },
       { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: "/cookies" },
+      ...socialMeta({ title, description, path: "/cookies" }),
     ],
-    links: [{ rel: "canonical", href: "/cookies" }],
+    links: [{ rel: "canonical", href: absoluteUrl("/cookies") }],
     scripts: [jsonLdScript(webPageSchema({ path: "/cookies", name: title, description }))],
   }),
   component: CookiesPage,

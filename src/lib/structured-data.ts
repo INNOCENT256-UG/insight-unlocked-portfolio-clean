@@ -1,11 +1,12 @@
 import { profile } from "@/data/profile";
+import { absoluteUrl, SITE_URL } from "@/lib/site";
 
 export const SITE_NAME = "Innocent — Data Analyst Portfolio";
 
 export const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
-  "@id": "/#person",
+  "@id": `${SITE_URL}/#person`,
   name: profile.name,
   jobTitle: profile.role,
   description: profile.intro,
@@ -19,17 +20,17 @@ export const personSchema = {
     "Artificial Intelligence",
     "Intelligent Automation",
   ],
-  url: "/",
+  url: SITE_URL,
 };
 
 export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "@id": "/#organization",
+  "@id": `${SITE_URL}/#organization`,
   name: profile.name,
   description: profile.tagline,
-  url: "/",
-  founder: { "@id": "/#person" },
+  url: SITE_URL,
+  founder: { "@id": `${SITE_URL}/#person` },
   areaServed: "Worldwide",
   knowsAbout: profile.disciplines,
 };
@@ -37,10 +38,10 @@ export const organizationSchema = {
 export const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "@id": "/#website",
+  "@id": `${SITE_URL}/#website`,
   name: SITE_NAME,
-  url: "/",
-  publisher: { "@id": "/#organization" },
+  url: SITE_URL,
+  publisher: { "@id": `${SITE_URL}/#organization` },
   inLanguage: "en",
 };
 
@@ -58,12 +59,12 @@ export function webPageSchema({
   return {
     "@context": "https://schema.org",
     "@type": type,
-    "@id": `${path}#webpage`,
-    url: path,
+    "@id": `${absoluteUrl(path)}#webpage`,
+    url: absoluteUrl(path),
     name,
     description,
-    isPartOf: { "@id": "/#website" },
-    about: { "@id": "/#person" },
+    isPartOf: { "@id": `${SITE_URL}/#website` },
+    about: { "@id": `${SITE_URL}/#person` },
     inLanguage: "en",
   };
 }

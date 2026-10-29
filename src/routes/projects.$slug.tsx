@@ -2,6 +2,7 @@ import { Link, createFileRoute, notFound } from "@tanstack/react-router";
 import { ProjectCaseStudy } from "@/components/ProjectCaseStudy";
 import { getProject } from "@/data/projects";
 import { jsonLdScript, webPageSchema } from "@/lib/structured-data";
+import { absoluteUrl, socialMeta } from "@/lib/site";
 
 export const Route = createFileRoute("/projects/$slug")({
   loader: ({ params }) => {
@@ -21,12 +22,9 @@ export const Route = createFileRoute("/projects/$slug")({
       meta: [
         { title },
         { name: "description", content: description },
-        { property: "og:title", content: title },
-        { property: "og:description", content: description },
-        { property: "og:type", content: "article" },
-        { property: "og:url", content: `/projects/${params.slug}` },
+        ...socialMeta({ title, description, path: `/projects/${params.slug}`, type: "article" }),
       ],
-      links: [{ rel: "canonical", href: `/projects/${params.slug}` }],
+      links: [{ rel: "canonical", href: absoluteUrl(`/projects/${params.slug}`) }],
       scripts: [
         jsonLdScript(
           webPageSchema({

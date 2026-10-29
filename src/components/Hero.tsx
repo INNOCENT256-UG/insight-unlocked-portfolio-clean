@@ -5,10 +5,10 @@ import { Button } from "@/components/ui/button";
 import { profile } from "@/data/profile";
 import { Reveal } from "./Reveal";
 import { TechStrip } from "./TechIcons";
-import portrait from "@/assets/innocent-portrait.jpg.asset.json";
 
 const FALLBACK_INITIALS = profile.name.split(" ").map((n) => n[0]).join("").slice(0, 2).toUpperCase();
 const WORKFLOW = ["Data", "Analysis", "Insight", "Decision"] as const;
+const PORTRAIT_SRC = "/images/innocent-portrait.jpg";
 
 export function Hero() {
   const imgRef = useRef<HTMLImageElement>(null);
@@ -60,7 +60,7 @@ export function Hero() {
               <span aria-hidden="true" className="orbit-ring orbit-slow absolute -inset-6 rounded-full" />
               <span aria-hidden="true" className="orbit-ring orbit-reverse absolute -inset-12 rounded-full" />
               <figure tabIndex={0} role="img" aria-label={`Portrait of ${profile.name}, ${profile.role}, specialising in analytics, business intelligence and intelligent automation`} className="relative h-36 w-36 overflow-hidden rounded-full border-[3px] border-card bg-secondary shadow-[var(--shadow-portrait)] outline-none ring-offset-4 ring-offset-background transition focus-visible:ring-2 focus-visible:ring-signal sm:h-44 sm:w-44 lg:h-52 lg:w-52">
-                {portraitError ? <div className="flex h-full w-full items-center justify-center font-display text-3xl text-signal lg:text-4xl" aria-hidden="true">{FALLBACK_INITIALS}</div> : <img ref={imgRef} src={portrait.url} alt={`Portrait of ${profile.name}, ${profile.role}`} width={1339} height={1024} loading="eager" decoding="async" onError={() => setPortraitError(true)} className="h-full w-full scale-[1.15] object-cover object-[50%_22%] sm:scale-110 sm:object-[50%_20%] lg:scale-105 lg:object-[50%_18%]" />}
+                {portraitError ? <div className="flex h-full w-full items-center justify-center font-display text-3xl text-signal lg:text-4xl" aria-hidden="true">{FALLBACK_INITIALS}</div> : <img ref={imgRef} src={PORTRAIT_SRC} alt={`Portrait of ${profile.name}, ${profile.role}`} width={1024} height={1024} loading="eager" decoding="async" onError={() => setPortraitError(true)} className="h-full w-full scale-[1.15] object-cover object-[50%_22%] sm:scale-110 sm:object-[50%_20%] lg:scale-105 lg:object-[50%_18%]" />}
               </figure>
             </div>
           </Reveal>

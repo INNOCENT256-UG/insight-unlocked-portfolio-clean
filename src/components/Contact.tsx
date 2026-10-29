@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Github, Mail, Send } from "lucide-react";
+import { Github, Mail } from "lucide-react";
 import { useState, type FormEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -28,7 +28,7 @@ function validate(values: Fields): Errors {
 export function Contact() {
   const [values, setValues] = useState<Fields>(empty);
   const [errors, setErrors] = useState<Errors>({});
-  const [sent, setSent] = useState(false);
+  const [checked, setChecked] = useState(false);
 
   const set = (key: "name" | "email" | "subject" | "message") => (event: { target: { value: string } }) => {
     setValues((prev) => ({ ...prev, [key]: event.target.value }));
@@ -41,11 +41,10 @@ export function Contact() {
     const nextErrors = validate(values);
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length > 0) {
-      setSent(false);
+      setChecked(false);
       return;
     }
-    setSent(true);
-    setValues(empty);
+    setChecked(true);
   };
 
   return (
@@ -89,6 +88,10 @@ export function Contact() {
 
           <Reveal delay={100}>
             <form noValidate onSubmit={onSubmit} className="rounded-xl border border-border bg-card p-6">
+              <div className="mb-6 rounded-lg border border-signal/30 bg-accent/35 p-4 text-sm leading-relaxed text-muted-foreground">
+                This form does not send messages yet. You can use it to check the details you want to share, but please email directly for a reply.
+                <a href={profile.links.email.href} className="ml-1 font-medium text-signal underline underline-offset-4">Email Innocent</a>.
+              </div>
               <div className="grid gap-5 sm:grid-cols-2">
                 <div className="space-y-2">
                   <Label htmlFor="name">Name</Label>
@@ -196,13 +199,12 @@ export function Contact() {
               </div>
 
               <div className="mt-6 flex flex-wrap items-center gap-4">
-                <Button type="submit" size="lg">
-                  <Send className="h-4 w-4" aria-hidden="true" />
-                  Send Message
+                <Button type="submit" size="lg" variant="outline">
+                  Check message
                 </Button>
                 <p aria-live="polite" className="text-sm text-muted-foreground">
-                  {sent
-                    ? "Message validated. Email delivery isn't connected yet — please use the email link for now."
+                  {checked
+                    ? "Your message details look complete. This form does not deliver email; please use the email link above to contact Innocent."
                     : ""}
                 </p>
               </div>

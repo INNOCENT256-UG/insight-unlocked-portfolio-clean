@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { jsonLdScript, webPageSchema } from "@/lib/structured-data";
 import { LegalBody } from "@/components/LegalPage";
 import { PageHeader } from "@/components/PageHeader";
+import { absoluteUrl, socialMeta } from "@/lib/site";
 
 const title = "Terms & Conditions — Innocent, Data Analyst";
 const description =
@@ -12,12 +13,9 @@ export const Route = createFileRoute("/terms")({
     meta: [
       { title },
       { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: "/terms" },
+      ...socialMeta({ title, description, path: "/terms" }),
     ],
-    links: [{ rel: "canonical", href: "/terms" }],
+    links: [{ rel: "canonical", href: absoluteUrl("/terms") }],
     scripts: [jsonLdScript(webPageSchema({ path: "/terms", name: title, description }))],
   }),
   component: TermsPage,

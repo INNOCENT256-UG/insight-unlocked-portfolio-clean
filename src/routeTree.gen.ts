@@ -16,7 +16,6 @@ import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as ResumeRouteImport } from './routes/resume'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SkillsRouteImport } from './routes/skills'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as ProjectsIndexRouteImport } from './routes/projects.index'
@@ -57,11 +56,6 @@ const ResumeRoute = ResumeRouteImport.update({
   path: '/resume',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const SkillsRoute = SkillsRouteImport.update({
   id: '/skills',
   path: '/skills',
@@ -91,7 +85,6 @@ export interface FileRoutesByFullPath {
   '/privacy': typeof PrivacyRoute
   '/projects': typeof ProjectsRouteWithChildren
   '/resume': typeof ResumeRoute
-  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/skills': typeof SkillsRoute
   '/terms': typeof TermsRoute
   '/projects/$slug': typeof ProjectsSlugRoute
@@ -104,7 +97,6 @@ export interface FileRoutesByTo {
   '/cookies': typeof CookiesRoute
   '/privacy': typeof PrivacyRoute
   '/resume': typeof ResumeRoute
-  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/skills': typeof SkillsRoute
   '/terms': typeof TermsRoute
   '/projects/$slug': typeof ProjectsSlugRoute
@@ -119,7 +111,6 @@ export interface FileRoutesById {
   '/privacy': typeof PrivacyRoute
   '/projects': typeof ProjectsRouteWithChildren
   '/resume': typeof ResumeRoute
-  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/skills': typeof SkillsRoute
   '/terms': typeof TermsRoute
   '/projects/$slug': typeof ProjectsSlugRoute
@@ -135,7 +126,6 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/projects'
     | '/resume'
-    | '/sitemap.xml'
     | '/skills'
     | '/terms'
     | '/projects/$slug'
@@ -148,7 +138,6 @@ export interface FileRouteTypes {
     | '/cookies'
     | '/privacy'
     | '/resume'
-    | '/sitemap.xml'
     | '/skills'
     | '/terms'
     | '/projects/$slug'
@@ -162,7 +151,6 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/projects'
     | '/resume'
-    | '/sitemap.xml'
     | '/skills'
     | '/terms'
     | '/projects/$slug'
@@ -177,7 +165,6 @@ export interface RootRouteChildren {
   PrivacyRoute: typeof PrivacyRoute
   ProjectsRoute: typeof ProjectsRouteWithChildren
   ResumeRoute: typeof ResumeRoute
-  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SkillsRoute: typeof SkillsRoute
   TermsRoute: typeof TermsRoute
 }
@@ -233,13 +220,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResumeRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/skills': {
       id: '/skills'
       path: '/skills'
@@ -293,7 +273,6 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacyRoute: PrivacyRoute,
   ProjectsRoute: ProjectsRouteWithChildren,
   ResumeRoute: ResumeRoute,
-  SitemapDotxmlRoute: SitemapDotxmlRoute,
   SkillsRoute: SkillsRoute,
   TermsRoute: TermsRoute,
 }

@@ -2,22 +2,20 @@ import { createFileRoute } from "@tanstack/react-router";
 import { jsonLdScript, webPageSchema } from "@/lib/structured-data";
 import { LegalBody } from "@/components/LegalPage";
 import { PageHeader } from "@/components/PageHeader";
+import { absoluteUrl, socialMeta } from "@/lib/site";
 
 const title = "Privacy Policy — Innocent Watsala, Data Analyst";
 const description =
-  "How this portfolio handles personal information: what the contact form collects, why, how long it is kept and how to ask for it to be deleted.";
+  "How this portfolio handles personal information: the current contact form does not transmit messages, and direct email is handled by the relevant email provider.";
 
 export const Route = createFileRoute("/privacy")({
   head: () => ({
     meta: [
       { title },
       { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: "/privacy" },
+      ...socialMeta({ title, description, path: "/privacy" }),
     ],
-    links: [{ rel: "canonical", href: "/privacy" }],
+    links: [{ rel: "canonical", href: absoluteUrl("/privacy") }],
     scripts: [jsonLdScript(webPageSchema({ path: "/privacy", name: title, description }))],
   }),
   component: PrivacyPage,
@@ -48,9 +46,8 @@ function PrivacyPage() {
             body: (
               <>
                 <p>
-                  Only what you choose to send through the contact form: your name, email address,
-                  subject and message. Nothing else is requested, and no field is required beyond
-                  what is needed to read and reply to your message.
+                  The contact form currently validates fields only in your browser. It does not send,
+                  store or transmit the name, email address, subject or message entered there.
                 </p>
                 <p>
                   There are no analytics tools, advertising pixels, tracking scripts or third-party
@@ -63,8 +60,8 @@ function PrivacyPage() {
             heading: "Why it is used",
             body: (
               <p>
-                Messages are used for one purpose only: to respond to your enquiry about work,
-                collaboration or a role. They are never sold, rented or used for marketing lists.
+                If you contact Innocent by email, the message is used only to respond to your enquiry
+                about work, collaboration or a role. It is never sold, rented or used for marketing lists.
               </p>
             ),
           },
@@ -72,8 +69,8 @@ function PrivacyPage() {
             heading: "How long it is kept",
             body: (
               <p>
-                Messages are kept only as long as the conversation is useful, and deleted on request
-                at any time.
+                This website does not retain form entries. Email you choose to send is handled by the
+                relevant email provider and kept only as long as the conversation is useful.
               </p>
             ),
           },
@@ -81,8 +78,8 @@ function PrivacyPage() {
             heading: "Your rights",
             body: (
               <p>
-                You can ask what has been stored about you, ask for a correction, or ask for it to be
-                deleted. Send that request through the contact page and it will be handled promptly.
+                You can ask for a correction or deletion of a direct email conversation. Use the email
+                address on the contact page for that request.
               </p>
             ),
           },
@@ -90,7 +87,7 @@ function PrivacyPage() {
             heading: "Links to other sites",
             body: (
               <p>
-                Links to GitHub, LinkedIn and similar services lead to sites with their own privacy
+                Links to GitHub and other external services lead to sites with their own privacy
                 practices, which this policy does not cover.
               </p>
             ),

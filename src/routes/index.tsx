@@ -8,6 +8,7 @@ import { About } from "@/components/About";
 import { Hero } from "@/components/Hero";
 import { Projects } from "@/components/Projects";
 import { Skills } from "@/components/Skills";
+import { absoluteUrl, socialMeta } from "@/lib/site";
 
 const title = "Innocent Watsala — Data Analyst | Data Analytics, Business Intelligence & AI";
 const description =
@@ -18,13 +19,9 @@ export const Route = createFileRoute("/")({
     meta: [
       { title },
       { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: "/" },
-      { name: "twitter:card", content: "summary_large_image" },
+      ...socialMeta({ title, description, path: "/" }),
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: absoluteUrl() }],
     scripts: [
       jsonLdScript(personSchema),
       jsonLdScript(webPageSchema({ path: "/", name: title, description })),
