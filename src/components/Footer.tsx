@@ -1,3 +1,4 @@
+
 import { Link } from "@tanstack/react-router";
 import { Github, Mail } from "lucide-react";
 import { profile } from "@/data/profile";
@@ -19,18 +20,39 @@ const legal = [
 export function Footer() {
   return (
     <footer data-site-footer className="border-t border-border bg-surface">
-      <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 sm:px-8 md:grid-cols-[1.4fr_1fr_1fr]">
+      <div className="mx-auto grid max-w-6xl gap-8 px-5 py-12 sm:px-8 md:grid-cols-[1.4fr_1fr_1fr]">
         <div>
-          <p className="font-display text-lg font-semibold">Innocent Watsala</p>
-          <p className="mt-2 text-sm text-muted-foreground">
-            Data Analyst | Data Analytics • BI • AI • Automation
+          <div className="flex items-center gap-4">
+            <img
+              src="/images/innocent-portrait.jpg"
+              alt="Innocent Watsala"
+              loading="lazy"
+              className="h-16 w-16 shrink-0 rounded-full border border-border object-cover object-top"
+            />
+
+            <div>
+              <p className="font-display text-lg font-semibold">
+                Innocent Watsala
+              </p>
+              <p className="mt-1 text-sm text-muted-foreground">
+                Data Analyst
+              </p>
+            </div>
+          </div>
+
+          <p className="mt-4 text-sm text-muted-foreground">
+            Data Analytics • Business Intelligence • AI • Automation
           </p>
-          <p className="mt-4 max-w-sm text-sm text-muted-foreground">{profile.tagline}</p>
+
+          <p className="mt-2 max-w-sm text-sm leading-6 text-muted-foreground">
+            {profile.tagline}
+          </p>
         </div>
 
         <nav aria-label="Footer">
           <p className="rule-label">Navigate</p>
-          <ul className="mt-4 space-y-2">
+
+          <ul className="mt-3 space-y-2">
             {nav.map((item) => (
               <li key={item.to}>
                 <Link
@@ -46,21 +68,27 @@ export function Footer() {
 
         <div>
           <p className="rule-label">Connect</p>
-          <ul className="mt-4 space-y-2">
+
+          <ul className="mt-3 space-y-2">
             <li>
               <a
                 href={profile.links.github.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
               >
-                <Github className="h-4 w-4" aria-hidden="true" /> GitHub
+                <Github className="h-4 w-4" aria-hidden="true" />
+                GitHub
               </a>
             </li>
+
             <li>
               <a
                 href={profile.links.email.href}
                 className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
               >
-                <Mail className="h-4 w-4" aria-hidden="true" /> watsalainnocent081@gmail.com
+                <Mail className="h-4 w-4" aria-hidden="true" />
+                {profile.links.email.address}
               </a>
             </li>
           </ul>
@@ -72,6 +100,7 @@ export function Footer() {
           <p className="text-xs text-muted-foreground">
             © {new Date().getFullYear()} Innocent. All rights reserved.
           </p>
+
           <nav aria-label="Legal">
             <ul className="flex flex-wrap items-center gap-4">
               {legal.map((item) => (

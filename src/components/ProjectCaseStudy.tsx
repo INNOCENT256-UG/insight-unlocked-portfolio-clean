@@ -1,98 +1,148 @@
+
 import { Link } from "@tanstack/react-router";
-import { ArrowLeft, ExternalLink, Github } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import type { Project } from "@/data/projects";
-import { KpiCard, Sparkline } from "./DataAccents";
+import { Project, projects } from "@/data/projects";
 import { Reveal } from "./Reveal";
 
 export function ProjectCaseStudy({ project }: { project: Project }) {
+  const currentIndex = projects.findIndex(
+    (item) => item.slug === project.slug,
+  );
+
+  const previousProject =
+    currentIndex > 0 ? projects[currentIndex - 1] : null;
+
+  const nextProject =
+    currentIndex >= 0 && currentIndex < projects.length - 1
+      ? projects[currentIndex + 1]
+      : null;
+
   return (
-    <article>
-      <header className="relative border-b border-border">
-        <div aria-hidden="true" className="grid-canvas pointer-events-none absolute inset-0" />
-        <div className="relative mx-auto max-w-4xl px-5 py-16 sm:px-8 lg:py-20">
+    <article className="border-b border-border">
+      {/* Project header */}
+      <header className="border-b border-border">
+        <div className="mx-auto max-w-6xl px-5 py-12 sm:px-8 sm:py-14 lg:py-16">
           <Link
             to="/projects"
             className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
           >
-            <ArrowLeft className="h-4 w-4" aria-hidden="true" /> All projects
+            <span aria-hidden="true">←</span>
+            Back to projects
           </Link>
 
-          <p className="rule-label mt-8">{project.category}</p>
-          <h1 className="mt-3 text-4xl font-semibold sm:text-5xl">{project.title}</h1>
-          <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">{project.problem}</p>
+          <div className="mt-7 max-w-4xl">
+            <p className="text-sm font-medium text-signal">
+              {project.category}
+            </p>
 
-          <ul className="mt-6 flex flex-wrap gap-2" aria-label="Tools used">
+            <h1 className="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+              {project.title}
+            </h1>
+
+            <p className="mt-5 max-w-3xl text-base leading-7 text-muted-foreground sm:text-lg">
+              {project.problem}
+            </p>
+          </div>
+
+          {/* Tools */}
+          <div className="mt-7 flex flex-wrap gap-2">
             {project.tools.map((tool) => (
-              <li
+              <span
                 key={tool}
-                className="rounded-md border border-border bg-card px-2.5 py-1 font-mono text-xs text-muted-foreground"
+                className="rounded-full border border-border bg-card px-3 py-1.5 text-xs text-muted-foreground"
               >
                 {tool}
-              </li>
+              </span>
             ))}
-          </ul>
+          </div>
 
-          <div className="mt-8 flex flex-wrap gap-3">
-            {project.links.github ? (
-              <Button asChild variant="outline" size="sm">
+          {/* Project links */}
+          {(project.links.github || project.links.demo) && (
+            <div className="mt-7 flex flex-wrap gap-3">
+              {project.links.github && (
                 <a
                   href={project.links.github}
                   target="_blank"
-                  rel="noreferrer"
-                  aria-label={`View ${project.title} on GitHub`}
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
                 >
-                  <Github className="h-4 w-4" aria-hidden="true" /> GitHub
+                  View on GitHub
+                  <span aria-hidden="true">↗</span>
                 </a>
-              </Button>
-            ) : null}
-            {project.links.demo ? (
-              <Button asChild variant="outline" size="sm">
+              )}
+
+              {project.links.demo && (
                 <a
                   href={project.links.demo}
                   target="_blank"
-                  rel="noreferrer"
-                  aria-label={`Live demo for ${project.title}`}
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-md border border-border px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-card"
                 >
-                  <ExternalLink className="h-4 w-4" aria-hidden="true" /> Live demo
+                  Live demo
+                  <span aria-hidden="true">↗</span>
                 </a>
-              </Button>
-            ) : null}
-          </div>
+              )}
+            </div>
+          )}
         </div>
       </header>
 
-      <div className="mx-auto max-w-4xl px-5 py-14 sm:px-8">
-        <p className="rounded-lg border border-border bg-surface p-4 text-sm text-muted-foreground">
-          Full case study based on a public dataset. All figures below come from the analysis in the linked
-          repository.
-        </p>
+      {/* Case study content */}
+      <div className="mx-auto max-w-6xl px-5 py-10 sm:px-8 sm:py-12">
+        {/* Project overview */}
+        <Reveal>
+          <div className="max-w-4xl">
+            <p className="text-sm font-medium text-signal">
+              Project overview
+            </p>
 
-        <div className="mt-10 grid gap-4 sm:grid-cols-3">
-          {project.metrics.map((metric, i) => (
-            <Reveal key={metric.label} delay={i * 70}>
-              <KpiCard label={metric.label} value={metric.value}>
-                {i === 0 ? <Sparkline /> : null}
-              </KpiCard>
-            </Reveal>
-          ))}
-        </div>
+            <p className="mt-3 text-base leading-7 text-foreground">
+              {project.summary}
+            </p>
+          </div>
+        </Reveal>
 
-        <div className="mt-14 space-y-12">
-          {project.caseStudy.map((section, i) => (
-            <Reveal key={section.heading} delay={i * 50}>
-              <section aria-labelledby={`section-${i}`}>
-                <div className="flex items-baseline gap-3">
-                  <span className="font-mono text-xs text-signal">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <h2 id={`section-${i}`} className="text-2xl font-semibold">
+        {/* Key metrics */}
+        {project.metrics.length > 0 && (
+          <Reveal delay={80}>
+            <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {project.metrics.map((metric) => (
+                <div
+                  key={metric.label}
+                  className="rounded-xl border border-border bg-card p-5"
+                >
+                  <p className="text-2xl font-semibold tracking-tight text-foreground">
+                    {metric.value}
+                  </p>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    {metric.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+        )}
+
+        {/* Case study sections */}
+        <div className="mt-10 space-y-9">
+          {project.caseStudy.map((section, index) => (
+            <Reveal key={section.heading} delay={index * 40}>
+              <section className="grid gap-4 border-b border-border pb-8 md:grid-cols-[180px_1fr] md:gap-8">
+                <div>
+                  <p className="text-xs font-medium uppercase tracking-wider text-signal">
+                    Step {String(index + 1).padStart(2, "0")}
+                  </p>
+
+                  <h2 className="mt-2 text-lg font-semibold text-foreground">
                     {section.heading}
                   </h2>
                 </div>
-                <div className="mt-4 space-y-4 border-l border-border pl-6">
-                  {section.body.map((paragraph, j) => (
-                    <p key={j} className="text-base leading-relaxed text-muted-foreground">
+
+                <div className="space-y-3">
+                  {section.body.map((paragraph, paragraphIndex) => (
+                    <p
+                      key={paragraphIndex}
+                      className="text-sm leading-7 text-muted-foreground sm:text-base"
+                    >
                       {paragraph}
                     </p>
                   ))}
@@ -102,23 +152,82 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
           ))}
         </div>
 
-        <div className="mt-16 rounded-xl border border-border bg-card p-6">
-          <h2 className="font-display text-lg font-semibold">Key insight</h2>
-          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{project.insight}</p>
-          <h2 className="mt-6 font-display text-lg font-semibold">Outcome</h2>
-          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{project.outcome}</p>
+        {/* Key insight */}
+        <Reveal>
+          <section className="mt-12 rounded-xl border border-border bg-card p-6 sm:p-8">
+            <p className="text-sm font-medium text-signal">
+              Key insight
+            </p>
+
+            <p className="mt-3 text-base leading-7 text-foreground">
+              {project.insight}
+            </p>
+
+            <div className="mt-7 border-t border-border pt-6">
+              <p className="text-sm font-medium text-signal">
+                Outcome
+              </p>
+
+              <p className="mt-3 text-sm leading-7 text-muted-foreground sm:text-base">
+                {project.outcome}
+              </p>
+            </div>
+          </section>
+        </Reveal>
+
+        {/* Navigation */}
+        <div className="mt-9 flex flex-col justify-between gap-5 border-t border-border pt-7 sm:flex-row sm:items-center">
+          <Link
+            to="/projects"
+            className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+          >
+            ← All projects
+          </Link>
+
+          <Link
+            to="/contact"
+            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+          >
+            Discuss this work →
+          </Link>
         </div>
 
-        <div className="mt-12 flex flex-wrap gap-3">
-          <Button asChild variant="outline">
-            <Link to="/projects">
-              <ArrowLeft className="h-4 w-4" aria-hidden="true" /> Back to projects
-            </Link>
-          </Button>
-          <Button asChild>
-            <Link to="/contact">Discuss this work</Link>
-          </Button>
-        </div>
+        {/* Previous and next projects */}
+        {(previousProject || nextProject) && (
+          <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            {previousProject ? (
+              <Link
+                to="/projects/$slug"
+                params={{ slug: previousProject.slug }}
+                className="rounded-xl border border-border p-5 transition-colors hover:bg-card"
+              >
+                <p className="text-xs text-muted-foreground">
+                  Previous project
+                </p>
+                <p className="mt-2 text-sm font-semibold text-foreground">
+                  ← {previousProject.title}
+                </p>
+              </Link>
+            ) : (
+              <div />
+            )}
+
+            {nextProject && (
+              <Link
+                to="/projects/$slug"
+                params={{ slug: nextProject.slug }}
+                className="rounded-xl border border-border p-5 text-left transition-colors hover:bg-card sm:text-right"
+              >
+                <p className="text-xs text-muted-foreground">
+                  Next project
+                </p>
+                <p className="mt-2 text-sm font-semibold text-foreground">
+                  {nextProject.title} →
+                </p>
+              </Link>
+            )}
+          </div>
+        )}
       </div>
     </article>
   );

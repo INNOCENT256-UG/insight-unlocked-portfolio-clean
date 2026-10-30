@@ -12,7 +12,7 @@ export function PageHeader({
   return (
     <header className="relative border-b border-border">
       <div aria-hidden="true" className="grid-canvas pointer-events-none absolute inset-0" />
-      <div className="relative mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-20">
+      <div className="relative mx-auto max-w-6xl px-5 py-12 sm:px-8 sm:py-14 lg:py-16">
         <Reveal>
           <p className="rule-label flex items-center gap-3">
             <span aria-hidden="true" className="inline-block h-px w-8 bg-signal" />

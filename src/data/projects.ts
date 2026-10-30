@@ -1,6 +1,15 @@
-export type ProjectCategory = "Data Analytics" | "SQL" | "Python" | "Power BI" | "AI";
 
-export type CaseStudySection = { heading: string; body: string[] };
+export type ProjectCategory =
+  | "Data Analytics"
+  | "SQL"
+  | "Python"
+  | "Power BI"
+  | "AI";
+
+export type CaseStudySection = {
+  heading: string;
+  body: string[];
+};
 
 export type Project = {
   slug: string;
@@ -23,7 +32,13 @@ export const projects: Project[] = [
     category: "Data Analytics",
     problem:
       "Food price data across Pakistan's major cities sits in fragmented survey records, so procurement, logistics and expansion teams cannot benchmark fair pricing, spot anomalies or size market potential.",
-    tools: ["Excel", "Pivot Tables", "Advanced Charting", "Conditional Formatting", "Data Modelling"],
+    tools: [
+      "Excel",
+      "Pivot Tables",
+      "Advanced Charting",
+      "Conditional Formatting",
+      "Data Modelling",
+    ],
     summary:
       "Consolidated 1,100 price records covering 35 food items across 10 Pakistani cities into a structured Excel model and executive dashboard covering revenue share, category pricing, volatility and concentration.",
     insight:
@@ -95,26 +110,38 @@ export const projects: Project[] = [
     title: "Telco Customer Churn Analysis",
     category: "Python",
     problem:
-      "A telecommunications provider was losing 26.5% of its customer base without a shared view of which contracts, payment methods and service bundles precede a cancellation.",
-    tools: ["Python", "Pandas", "NumPy", "Matplotlib", "Seaborn", "SciPy", "Jupyter", "Excel"],
+      "The IBM Telco Customer Churn dataset provides an opportunity to investigate why customers leave a telecommunications service. The analysis examines which contracts, payment methods and service combinations are associated with higher churn.",
+    tools: [
+      "Python",
+      "Pandas",
+      "NumPy",
+      "Matplotlib",
+      "Seaborn",
+      "SciPy",
+      "Jupyter",
+      "Excel",
+    ],
     summary:
-      "Analysed 7,043 customer records across 21 features to quantify churn, isolate the highest-risk segments, and size the revenue at stake alongside a retention plan.",
+      "Analysed 7,043 customer records across 21 features to quantify churn, isolate the highest-risk segments, and estimate the revenue exposure associated with customer cancellations.",
     insight:
       "Churn concentrates in a small set of identifiable segments: month-to-month contracts (42% churn), electronic-check payers (45.3%) and fiber-optic subscribers (41.9%). Customers with four or more add-on services churn at 15%, roughly 2.5x lower than those with two or fewer.",
     outcome:
-      "A documented analysis showing $136,721 in monthly revenue loss ($1.64M annually), with a 20% churn reduction target worth $328,130 per year — an 82–164% first-year return against a $200K–$400K implementation cost.",
+      "A documented analysis estimating $136,721 in monthly revenue exposure ($1.64M annually). Under an illustrative 20% churn-reduction scenario, the estimated annual revenue retained is approximately $328,130. These are scenario-based estimates, not realised savings or measured business results.",
     metrics: [
       { label: "Customer records", value: "7,043" },
       { label: "Churn rate", value: "26.5%" },
-      { label: "Annual savings identified", value: "$328K" },
+      { label: "Projected annual savings", value: "$328K" },
     ],
-    links: { github: "https://github.com/INNOCENT256-UG/WA_Fn-UseC_-Telco-Customer-Churn" },
+    links: {
+      github:
+        "https://github.com/INNOCENT256-UG/WA_Fn-UseC_-Telco-Customer-Churn",
+    },
     caseStudy: [
       {
         heading: "Problem",
         body: [
-          "The company knew customers were leaving but discussed churn anecdotally. There was no agreed description of who leaves, after what pattern of use, or what it costs.",
-          "The objective was to quantify the loss, identify the segments driving it, and recommend retention actions that could be justified financially.",
+          "The dataset makes it possible to examine customer churn using evidence rather than assumptions. The analytical challenge is to identify which customer characteristics and service patterns are associated with cancellations.",
+          "The objective was to quantify churn, identify the segments driving it, and estimate the potential financial impact of targeted retention scenarios.",
         ],
       },
       {
@@ -152,20 +179,30 @@ export const projects: Project[] = [
       {
         heading: "Outcome",
         body: [
-          "Quantified the loss at $136,721 per month and $1,640,652 per year, and sized a realistic 20% churn reduction at $328,130 in annual savings.",
-          "Against an implementation cost of $200K–$400K, the recommended retention programme returns 82–164% in its first year, concentrated on contract migration, automatic-payment incentives and add-on bundling for the identified segments.",
+          "The analysis estimates revenue exposure at $136,721 per month and $1,640,652 per year. An illustrative 20% churn-reduction scenario corresponds to approximately $328,130 in annual revenue retained.",
+          "This scenario is an estimate based on the dataset and stated assumptions. It does not represent realised savings, a measured retention outcome or a verified return on investment.",
           "Delivered as a reproducible Jupyter analysis with an Excel report and a visual dashboard summarising churn distribution, contract and service breakdowns, and the feature correlation matrix.",
         ],
       },
     ],
   },
+
   {
     slug: "titanic-survival-analysis",
     title: "Titanic Survival Analysis & Predictive Modelling",
     category: "AI",
     problem:
       "The Titanic passenger records are messy and incomplete, and survival is usually discussed anecdotally rather than measured — the task was to quantify who survived, why, and whether that pattern can be predicted.",
-    tools: ["Python", "Pandas", "Scikit-learn", "XGBoost", "Matplotlib", "Seaborn", "Jupyter", "Docker"],
+    tools: [
+      "Python",
+      "Pandas",
+      "Scikit-learn",
+      "XGBoost",
+      "Matplotlib",
+      "Seaborn",
+      "Jupyter",
+      "Docker",
+    ],
     summary:
       "End-to-end analysis of 891 passenger records: cleaning heavily missing fields, engineering features from names and cabins, quantifying survival across demographics, then building and comparing four classification models.",
     insight:
@@ -177,7 +214,10 @@ export const projects: Project[] = [
       { label: "Overall survival", value: "38.4%" },
       { label: "Best model accuracy", value: "~83%" },
     ],
-    links: { github: "https://github.com/INNOCENT256-UG/TITANIC_DATA_ANALYSIS" },
+    links: {
+      github:
+        "https://github.com/INNOCENT256-UG/TITANIC_DATA_ANALYSIS",
+    },
     caseStudy: [
       {
         heading: "Problem",
@@ -227,15 +267,22 @@ export const projects: Project[] = [
         ],
       },
     ],
-
   },
+
   {
     slug: "running-local-llms-thinkpad-t480",
     title: "Running Local LLMs on a ThinkPad T480",
     category: "AI",
     problem:
       "Learning SQL, Python, data analytics and software development with AI assistance should not require a dedicated GPU or sending every prompt to a cloud service.",
-    tools: ["Ollama", "Docker", "Open WebUI", "WSL 2", "Windows 11", "VS Code"],
+    tools: [
+      "Ollama",
+      "Docker",
+      "Open WebUI",
+      "WSL 2",
+      "Windows 11",
+      "VS Code",
+    ],
     summary:
       "Documented a private, CPU-only local AI environment on a Lenovo ThinkPad T480, combining Ollama for local models, Docker and WSL 2 for deployment, and Open WebUI for a familiar chat interface.",
     insight:
@@ -247,7 +294,10 @@ export const projects: Project[] = [
       { label: "System memory", value: "16 GB" },
       { label: "Models assessed", value: "3" },
     ],
-    links: { github: "https://github.com/INNOCENT256-UG/Running-Local-LLMs-on-a-ThinkPad-T480" },
+    links: {
+      github:
+        "https://github.com/INNOCENT256-UG/Running-Local-LLMs-on-a-ThinkPad-T480",
+    },
     caseStudy: [
       {
         heading: "Problem",
@@ -286,44 +336,54 @@ export const projects: Project[] = [
       },
     ],
   },
+
   {
     slug: "crm-sales-inventory-dashboard",
     title: "CRM Sales & Inventory Analytics Dashboard",
     category: "Data Analytics",
     problem:
       "Customer relationships, sales pipeline, revenue performance and stock levels were tracked in separate places, so nobody could see which SKUs were about to run out, which reps were behind target, or where working capital was tied up.",
-    tools: ["Python", "Pandas", "OpenPyXL", "Excel", "Pivot Tables"],
+    tools: [
+      "Python",
+      "Pandas",
+      "OpenPyXL",
+      "Excel",
+      "Pivot Tables",
+    ],
     summary:
-      "Built a Python-generated Excel BI workbook covering 250 customers, 1,000 sales transactions, 50 products and 150 pipeline leads, with KPI dashboards, charts, pivot summaries and automated insight text for operational and executive review.",
+      "Built a Python-generated Excel BI workbook using simulated data for 250 customers, 1,000 sales transactions, 50 products and 150 pipeline leads, with KPI dashboards, charts, pivot summaries and automated insight text for operational and executive review.",
     insight:
-      "Inventory risk and sales risk sit in the same dataset: the SKUs driving the most revenue are also the ones most often near their reorder point, while lost opportunities cluster in specific pipeline stages and reps rather than spreading evenly.",
+      "Within the simulated dataset, inventory risk and sales risk sit in the same dataset: the SKUs driving the most revenue are also the ones most often near their reorder point, while lost opportunities cluster in specific pipeline stages and reps rather than spreading evenly.",
     outcome:
-      "A single reproducible workbook with a CRM dashboard, inventory dashboard, sales performance dashboard and an automated insights sheet that regenerates end-to-end from raw CSVs with no manual formatting.",
+      "A single reproducible workbook using simulated business data, with a CRM dashboard, inventory dashboard, sales performance dashboard and an automated insights sheet that regenerates end-to-end from raw CSVs with no manual formatting.",
     metrics: [
       { label: "Sales transactions", value: "1,000" },
       { label: "Customers tracked", value: "250" },
       { label: "SKUs monitored", value: "50" },
     ],
-    links: { github: "https://github.com/INNOCENT256-UG/INVENTORY-MANAGEMENT" },
+    links: {
+      github:
+        "https://github.com/INNOCENT256-UG/INVENTORY-MANAGEMENT",
+    },
     caseStudy: [
       {
         heading: "Problem",
         body: [
-          "The business needed to track customer segmentation, sales performance, inventory levels, pipeline conversion and lost opportunities — but each lived in its own file, and none of them refreshed together.",
+          "The project explores how a business could track customer segmentation, sales performance, inventory levels, pipeline conversion and lost opportunities when these activities are recorded separately.",
           "The goal was one workbook that an operations lead and an executive could both use: aggregated KPIs on top, drillable tables underneath, and alerts that surface without anyone hunting for them.",
         ],
       },
       {
         heading: "Data",
         body: [
-          "Four related datasets: 250 customers with industry, location, segment and status; 1,000 sales transactions with revenue, profit, discount and sales rep; 50 products with stock levels, reorder points and categories; and 150 pipeline leads with stage and win probability.",
-          "The datasets are joined on customer, product and rep keys so revenue, margin and stock movement can be read against the same entities.",
+          "Four simulated datasets: 250 customers with industry, location, segment and status; 1,000 sales transactions with revenue, profit, discount and sales rep; 50 products with stock levels, reorder points and categories; and 150 pipeline leads with stage and win probability.",
+          "The simulated datasets are joined on customer, product and rep keys so revenue, margin and stock movement can be read against the same entities. They are demonstration data, not records from a real business.",
         ],
       },
       {
         heading: "Process",
         body: [
-          "Generated and modelled the data in Pandas, then wrote the formatted workbook with OpenPyXL so every sheet, chart and conditional format is produced by code rather than by hand.",
+          "Generated and modelled the simulated data in Pandas, then wrote the formatted workbook with OpenPyXL so every sheet, chart and conditional format is produced by code rather than by hand.",
           "Built four surfaces: a CRM dashboard (total customers, revenue, profit, active leads, conversion rate, average order value), an inventory dashboard, a sales performance dashboard, and an automated insights sheet.",
           "Added threshold logic — red for below minimum stock, yellow for approaching reorder level, and flags for slow-moving inventory past a configurable age.",
         ],
@@ -348,22 +408,18 @@ export const projects: Project[] = [
       {
         heading: "Outcome",
         body: [
-          "Delivered CRM_Sales_Inventory_Dashboard.xlsx plus the raw CSV inputs and chart exports, regenerated by a single Python run so the reporting cycle needs no manual assembly.",
+          "Delivered CRM_Sales_Inventory_Dashboard.xlsx plus the simulated CSV inputs and chart exports, regenerated by a single Python run so the reporting cycle needs no manual assembly.",
           "Each view targets a role: stock health for executives, reorder and procurement for operations, demand and movement for analysts, warehouse distribution for logistics, and inventory turnover for finance.",
         ],
       },
     ],
-
   },
 ];
 
 export const projectCategories: Array<"All" | ProjectCategory> = [
   "All",
-  "Data Analytics",
-  "SQL",
-  "Python",
-  "Power BI",
-  "AI",
+  ...Array.from(new Set(projects.map((project) => project.category))),
 ];
 
-export const getProject = (slug: string) => projects.find((p) => p.slug === slug);
+export const getProject = (slug: string) =>
+  projects.find((project) => project.slug === slug);

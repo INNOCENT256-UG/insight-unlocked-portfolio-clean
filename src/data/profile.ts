@@ -1,13 +1,26 @@
+
 export const profile = {
   name: "Innocent Watsala",
   role: "Data Analyst",
   tagline: "Turning complex data into clear, actionable insights.",
-  disciplines: ["Data Analytics", "Business Intelligence", "AI", "Intelligent Automation"],
+  disciplines: [
+    "Data Analytics",
+    "Business Intelligence",
+    "AI",
+    "Intelligent Automation",
+  ],
   intro:
-    "I work with data analysis, business intelligence, Python, SQL, Excel, Power BI, AI and automation to turn raw, messy data into decisions people can act on — clean datasets, dependable reporting and dashboards that answer real business questions.",
+    "I use data analysis, business intelligence, Python, SQL, Excel, and Power BI to turn raw data into clear insights. My work focuses on data preparation, analysis, reporting, and visualisation, with an interest in applying AI and automation to improve analytical workflows.",
   links: {
-    github: { label: "GitHub", href: "https://github.com/INNOCENT256-UG" },
-    email: { label: "Email", href: "mailto:watsalainnocent081@gmail.com", address: "watsalainnocent081@gmail.com" },
+    github: {
+      label: "GitHub",
+      href: "https://github.com/INNOCENT256-UG",
+    },
+    email: {
+      label: "Email",
+      href: "mailto:watsalainnocent081@gmail.com",
+      address: "watsalainnocent081@gmail.com",
+    },
   },
 } as const;
 
@@ -21,9 +34,9 @@ export const whatIDo = [
 ];
 
 export const aboutStory = [
-  "My focus is data analytics: taking questions that matter to a business and answering them with evidence rather than opinion. Most of my time goes into cleaning data, understanding how it was produced, and shaping it into something a decision-maker can read in seconds.",
-  "Working in operational environments taught me where data actually comes from — the manual steps, the workarounds, the fields people forget to fill in. That perspective makes me careful about data quality and practical about what a report needs to do.",
-  "I keep learning across analytics and AI: statistical thinking, SQL depth, dashboard design, and using AI and automation to remove repetitive work from the reporting cycle. The goal is a professional data analytics career built on clear thinking and clear communication.",
+  "My focus is data analytics: understanding business questions and using evidence to develop useful answers. I work with data preparation, exploration, and visualisation to make information easier to interpret and use.",
+  "My experience in operational environments has shaped my understanding of how data is collected and used in day-to-day work. It has also made me attentive to data quality, practical reporting needs, and the importance of presenting information clearly.",
+  "I continue to develop my skills in SQL, Python, Excel, Power BI, analytical thinking, and dashboard design. I am also exploring how AI and automation can support more efficient reporting workflows.",
 ];
 
 export const resumeVersions = [
@@ -32,8 +45,13 @@ export const resumeVersions = [
     title: "Data Analytics Resume",
     primary: true,
     summary: "Data Analytics | Business Intelligence | AI & Automation",
-    audience: ["Data Analyst", "Junior Data Analyst", "Business Intelligence", "Reporting", "Analytics roles"],
-    // Placeholder file — replace with the real PDF in /public/resume/.
+    audience: [
+      "Data Analyst",
+      "Junior Data Analyst",
+      "Business Intelligence",
+      "Reporting",
+      "Analytics roles",
+    ],
     file: "/resume/innocent-data-analytics-resume.pdf",
   },
   {
@@ -41,7 +59,12 @@ export const resumeVersions = [
     title: "Operations / Logistics Resume",
     primary: false,
     summary: "Operations | Logistics | Ground & Warehouse Environments",
-    audience: ["Logistics", "Airport Operations", "Warehouse", " Operations"],
+    audience: [
+      "Logistics",
+      "Airport Operations",
+      "Warehouse",
+      "Operations",
+    ],
     file: "/resume/innocent-operations-resume.pdf",
   },
 ] as const;
