@@ -1,4 +1,3 @@
-
 import { Link } from "@tanstack/react-router";
 import { Github, Mail } from "lucide-react";
 import { profile } from "@/data/profile";
@@ -18,6 +17,10 @@ const legal = [
 ] as const;
 
 export function Footer() {
+  const openPrivacyNotice = () => {
+    window.dispatchEvent(new Event("open-privacy-notice"));
+  };
+
   return (
     <footer data-site-footer className="border-t border-border bg-surface">
       <div className="mx-auto grid max-w-6xl gap-8 px-5 py-12 sm:px-8 md:grid-cols-[1.4fr_1fr_1fr]">
@@ -29,14 +32,9 @@ export function Footer() {
               loading="lazy"
               className="h-16 w-16 shrink-0 rounded-full border border-border object-cover object-top"
             />
-
             <div>
-              <p className="font-display text-lg font-semibold">
-                Innocent Watsala
-              </p>
-              <p className="mt-1 text-sm text-muted-foreground">
-                Data Analyst
-              </p>
+              <p className="font-display text-lg font-semibold">Innocent Watsala</p>
+              <p className="mt-1 text-sm text-muted-foreground">Data Analyst</p>
             </div>
           </div>
 
@@ -44,14 +42,11 @@ export function Footer() {
             Data Analytics • Business Intelligence • AI • Automation
           </p>
 
-          <p className="mt-2 max-w-sm text-sm leading-6 text-muted-foreground">
-            {profile.tagline}
-          </p>
+          <p className="mt-2 max-w-sm text-sm leading-6 text-muted-foreground">{profile.tagline}</p>
         </div>
 
         <nav aria-label="Footer">
           <p className="rule-label">Navigate</p>
-
           <ul className="mt-3 space-y-2">
             {nav.map((item) => (
               <li key={item.to}>
@@ -68,7 +63,6 @@ export function Footer() {
 
         <div>
           <p className="rule-label">Connect</p>
-
           <ul className="mt-3 space-y-2">
             <li>
               <a
@@ -113,6 +107,16 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
+
+              <li>
+                <button
+                  type="button"
+                  onClick={openPrivacyNotice}
+                  className="text-xs text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline"
+                >
+                  Privacy & Cookie Settings
+                </button>
+              </li>
             </ul>
           </nav>
         </div>

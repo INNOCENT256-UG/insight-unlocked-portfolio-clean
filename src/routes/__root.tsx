@@ -13,8 +13,10 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+
 import { jsonLdScript, organizationSchema, websiteSchema } from "@/lib/structured-data";
 import { SITE_URL, SOCIAL_IMAGE_URL } from "@/lib/site";
+import { PrivacyNotice } from "@/components/PrivacyNotice";
 
 function NotFoundComponent() {
   return (
@@ -144,10 +146,13 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <div className="flex min-h-screen flex-col">
         <Navbar />
+
         <main className="flex-1">
           <Outlet />
         </main>
+
         <Footer />
+        <PrivacyNotice />
       </div>
     </QueryClientProvider>
   );
