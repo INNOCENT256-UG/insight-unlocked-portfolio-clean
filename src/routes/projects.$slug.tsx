@@ -22,7 +22,22 @@ export const Route = createFileRoute("/projects/$slug")({
       meta: [
         { title },
         { name: "description", content: description },
-        ...socialMeta({ title, description, path: `/projects/${params.slug}`, type: "article" }),
+        ...socialMeta({
+          title,
+          description,
+          path: `/projects/${params.slug}`,
+          type: "article",
+          ...(loaderData.project.cover
+            ? {
+                image: {
+                  url: loaderData.project.cover.src,
+                  width: loaderData.project.cover.width,
+                  height: loaderData.project.cover.height,
+                  alt: loaderData.project.cover.alt,
+                },
+              }
+            : {}),
+        }),
       ],
       links: [{ rel: "canonical", href: absoluteUrl(`/projects/${params.slug}`) }],
       scripts: [

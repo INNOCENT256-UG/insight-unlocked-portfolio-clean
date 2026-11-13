@@ -30,7 +30,7 @@ function PrivacyPage() {
         description="A short, plain-English explanation of what this site does and does not collect."
       />
       <LegalBody
-        updated="6 September 2026"
+        updated="13 November 2026"
         sections={[
           {
             heading: "Who is responsible",
@@ -46,12 +46,17 @@ function PrivacyPage() {
             body: (
               <>
                 <p>
-                  The contact form currently validates fields only in your browser. It does not send,
-                  store or transmit the name, email address, subject or message entered there.
+                  The contact form validates fields only in your browser and prepares a{" "}
+                  <code>mailto:</code> draft. It does not send, store or transmit the name, email
+                  address, subject or message entered there.
                 </p>
                 <p>
                   There are no analytics tools, advertising pixels, tracking scripts or third-party
-                  embeds on this site. Browsing these pages does not build a profile of you.
+                  embeds on this site. As with any website, the hosting provider (Vercel) and font
+                  CDN (Google Fonts) receive standard technical request data (such as IP address,
+                  requested URL, and browser headers) needed to serve pages and protect the service.
+                  For details on minimal browser <code>localStorage</code> usage, see the Cookies &amp;
+                  Storage Policy.
                 </p>
               </>
             ),

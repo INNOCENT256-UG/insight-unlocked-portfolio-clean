@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Wordmark } from "./BrandMark";
@@ -17,6 +17,7 @@ const navItems = [
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -25,31 +26,47 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    if (!open) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [open]);
+
   return (
-    <header data-site-header
+    <header
+      data-site-header
       className={cn(
-        "sticky top-0 z-50 w-full border-b transition-colors duration-300",
-        scrolled ? "border-border bg-background/92 backdrop-blur-md" : "border-transparent bg-background",
+        "sticky top-0 z-50 w-full border-b border-[var(--header-border)] bg-[var(--header)] text-[var(--header-foreground)] transition-shadow duration-300",
+        scrolled && "shadow-md shadow-black/15",
       )}
     >
-      <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-5 sm:px-8 lg:px-10">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-8">
         <Link
           to="/"
-          className="group rounded-md outline-none focus-visible:ring-2 focus-visible:ring-signal focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+          className="group rounded-md outline-none focus-visible:ring-2 focus-visible:ring-[var(--signal-bright)] focus-visible:ring-offset-4 focus-visible:ring-offset-[var(--header)]"
           onClick={() => setOpen(false)}
           aria-label="Innocent — Data Analyst, home"
         >
-          <Wordmark />
+          <Wordmark inverted />
         </Link>
 
-        <nav aria-label="Main" className="hidden items-center gap-0.5 lg:flex">
+        <nav aria-label="Main" className="hidden items-center gap-1 lg:flex">
           {navItems.map((item) => (
             <Link
               key={item.to}
               to={item.to}
               activeOptions={{ exact: item.to === "/" }}
-              className="group relative px-3.5 py-2 text-[0.8125rem] font-medium tracking-[0.01em] text-muted-foreground transition-colors hover:text-foreground"
-              activeProps={{ className: "text-foreground" }}
+              className="group relative px-3.5 py-2 text-[0.8125rem] font-medium tracking-[0.01em] text-[var(--header-muted)] transition-colors hover:text-[var(--header-foreground)]"
+              activeProps={{
+                className: "!text-[var(--header-foreground)]",
+                "aria-current": "page",
+              }}
             >
               {({ isActive }) => (
                 <>
@@ -57,7 +74,7 @@ export function Navbar() {
                   <span
                     aria-hidden="true"
                     className={cn(
-                      "absolute inset-x-3.5 -bottom-px h-px origin-left bg-signal transition-transform duration-300",
+                      "absolute inset-x-3.5 -bottom-px h-0.5 origin-left rounded-full bg-gradient-to-r from-[var(--signal-bright)] to-[var(--signal-lime)] transition-transform duration-300",
                       isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100",
                     )}
                   />
@@ -68,18 +85,18 @@ export function Navbar() {
           <Button
             asChild
             size="sm"
-            variant="outline"
-            className="ml-4 h-9 rounded-full border-signal/45 px-4 text-[0.8125rem] text-signal transition-colors hover:bg-signal hover:text-signal-foreground"
+            className="ml-4 h-9 rounded-sm px-4 text-[0.8125rem] cta-gradient"
           >
             <Link to="/resume">View Resume</Link>
           </Button>
         </nav>
 
         <Button
+          ref={menuButtonRef}
           type="button"
           size="icon"
           variant="outline"
-          className="h-10 w-10 rounded-full border-border text-foreground shadow-none hover:border-signal/45 hover:bg-background hover:text-signal lg:hidden"
+          className="h-11 w-11 rounded-sm border-[var(--header-border)] bg-transparent text-[var(--header-foreground)] shadow-none hover:border-[var(--signal-bright)] hover:bg-white/5 hover:text-[var(--signal-bright)] lg:hidden"
           aria-expanded={open}
           aria-controls="mobile-nav"
           aria-label={open ? "Close menu" : "Open menu"}
@@ -90,29 +107,38 @@ export function Navbar() {
       </div>
 
       {open ? (
-        <div id="mobile-nav" className="border-t border-border bg-background lg:hidden">
-          <nav aria-label="Mobile" className="mx-auto flex max-w-6xl flex-col px-5 py-2 sm:px-8">
+        <div
+          id="mobile-nav"
+          className="border-t border-[var(--header-border)] bg-[var(--header)] text-[var(--header-foreground)] lg:hidden"
+        >
+          <nav aria-label="Mobile" className="mx-auto flex max-w-6xl flex-col px-5 py-3 sm:px-8">
             {navItems.map((item) => (
               <Link
                 key={item.to}
                 to={item.to}
                 activeOptions={{ exact: item.to === "/" }}
                 onClick={() => setOpen(false)}
-                className="flex items-center gap-3 border-b border-border/60 py-3.5 text-[0.95rem] font-medium text-muted-foreground transition-colors last-of-type:border-b-0 hover:text-foreground"
-                activeProps={{ className: "text-foreground" }}
+                className="flex items-center gap-3 border-b border-[var(--header-border)] py-3 text-[0.95rem] font-medium text-[var(--header-muted)] transition-colors last-of-type:border-b-0 hover:text-[var(--header-foreground)]"
+                activeProps={{
+                className: "!text-[var(--header-foreground)]",
+                "aria-current": "page",
+              }}
               >
                 {({ isActive }) => (
                   <>
                     <span
                       aria-hidden="true"
-                      className={cn("h-1.5 w-1.5 rounded-full transition-colors", isActive ? "bg-signal" : "bg-transparent")}
+                      className={cn(
+                        "h-1.5 w-1.5 rounded-full transition-colors",
+                        isActive ? "bg-[var(--signal-bright)]" : "bg-transparent",
+                      )}
                     />
                     {item.label}
                   </>
                 )}
               </Link>
             ))}
-            <Button asChild className="mt-4 mb-3 rounded-full">
+            <Button asChild className="mt-4 mb-2 rounded-sm cta-gradient">
               <Link to="/resume" onClick={() => setOpen(false)}>
                 View Resume
               </Link>

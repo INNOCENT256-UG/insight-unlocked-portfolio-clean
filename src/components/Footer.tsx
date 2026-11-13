@@ -1,8 +1,10 @@
 import { Link } from "@tanstack/react-router";
-import { Github, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
 import { profile } from "@/data/profile";
+import { GitHubLogo } from "./TechIcons";
 
 const nav = [
+  { to: "/", label: "Home" },
   { to: "/about", label: "About" },
   { to: "/skills", label: "Skills" },
   { to: "/projects", label: "Projects" },
@@ -22,37 +24,48 @@ export function Footer() {
   };
 
   return (
-    <footer data-site-footer className="border-t border-border bg-surface">
-      <div className="mx-auto grid max-w-6xl gap-8 px-5 py-12 sm:px-8 md:grid-cols-[1.4fr_1fr_1fr]">
-        <div>
+    <footer
+      data-site-footer
+      className="border-t border-[var(--header-border)] bg-[var(--header)] text-[var(--header-foreground)]"
+    >
+      <div className="mx-auto grid max-w-6xl items-start gap-10 px-5 py-12 sm:grid-cols-2 sm:px-8 lg:grid-cols-[1.6fr_1fr_1fr] lg:gap-12">
+        <div className="sm:col-span-2 lg:col-span-1">
           <div className="flex items-center gap-4">
             <img
               src="/images/innocent-portrait.jpg"
               alt="Innocent Watsala"
               loading="lazy"
-              className="h-16 w-16 shrink-0 rounded-full border border-border object-cover object-top"
+              className="h-14 w-14 shrink-0 rounded-full border border-[var(--header-border)] object-cover object-top"
             />
             <div>
-              <p className="font-display text-lg font-semibold">Innocent Watsala</p>
-              <p className="mt-1 text-sm text-muted-foreground">Data Analyst</p>
+              <p className="font-display text-lg font-semibold leading-tight text-[var(--header-foreground)]">
+                Innocent Watsala
+              </p>
+              <p className="mt-1 font-mono text-xs uppercase tracking-[0.14em] text-[var(--signal-bright)]">
+                Data Analyst
+              </p>
             </div>
           </div>
 
-          <p className="mt-4 text-sm text-muted-foreground">
-            Data Analytics • Business Intelligence • AI • Automation
+          <p className="mt-4 max-w-sm text-sm leading-6 text-[var(--header-muted)]">
+            {profile.tagline}
           </p>
 
-          <p className="mt-2 max-w-sm text-sm leading-6 text-muted-foreground">{profile.tagline}</p>
+          <p className="mt-2 text-xs tracking-wide text-[var(--header-muted)]">
+            Data Analytics · Business Intelligence · AI · Automation
+          </p>
         </div>
 
         <nav aria-label="Footer">
-          <p className="rule-label">Navigate</p>
-          <ul className="mt-3 space-y-2">
+          <p className="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-[var(--signal-bright)]">
+            Navigate
+          </p>
+          <ul className="mt-4 space-y-2.5">
             {nav.map((item) => (
               <li key={item.to}>
                 <Link
                   to={item.to}
-                  className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  className="text-sm text-[var(--header-muted)] transition-colors hover:text-[var(--header-foreground)]"
                 >
                   {item.label}
                 </Link>
@@ -62,46 +75,46 @@ export function Footer() {
         </nav>
 
         <div>
-          <p className="rule-label">Connect</p>
-          <ul className="mt-3 space-y-2">
+          <p className="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-[var(--signal-bright)]">
+            Connect
+          </p>
+          <ul className="mt-4 space-y-2.5">
             <li>
               <a
                 href={profile.links.github.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                className="inline-flex items-center gap-2.5 text-sm text-[var(--header-muted)] transition-colors hover:text-[var(--header-foreground)]"
               >
-                <Github className="h-4 w-4" aria-hidden="true" />
-                GitHub
+                <GitHubLogo className="h-4 w-4 shrink-0 text-[var(--signal-bright)]" />
+                <span>GitHub</span>
               </a>
             </li>
 
             <li>
               <a
                 href={profile.links.email.href}
-                className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                className="inline-flex items-center gap-2.5 text-sm text-[var(--header-muted)] transition-colors hover:text-[var(--header-foreground)]"
               >
-                <Mail className="h-4 w-4" aria-hidden="true" />
-                {profile.links.email.address}
+                <Mail className="h-4 w-4 shrink-0 text-[var(--signal-bright)]" aria-hidden="true" />
+                <span className="break-words">{profile.links.email.address}</span>
               </a>
             </li>
           </ul>
         </div>
       </div>
 
-      <div className="border-t border-border">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-5 py-6 sm:px-8">
-          <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Innocent. All rights reserved.
-          </p>
+      <div className="border-t border-[var(--header-border)]">
+        <div className="mx-auto flex max-w-6xl flex-col gap-4 px-5 py-6 text-xs text-[var(--header-muted)] sm:flex-row sm:items-center sm:justify-between sm:px-8">
+          <p>© {new Date().getFullYear()} Innocent Watsala. All rights reserved.</p>
 
           <nav aria-label="Legal">
-            <ul className="flex flex-wrap items-center gap-4">
+            <ul className="flex flex-wrap items-center gap-x-5 gap-y-2">
               {legal.map((item) => (
                 <li key={item.to}>
                   <Link
                     to={item.to}
-                    className="text-xs text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline"
+                    className="inline-flex min-h-11 items-center underline-offset-4 transition-colors hover:text-[var(--header-foreground)] hover:underline"
                   >
                     {item.label}
                   </Link>
@@ -112,9 +125,9 @@ export function Footer() {
                 <button
                   type="button"
                   onClick={openPrivacyNotice}
-                  className="text-xs text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline"
+                  className="inline-flex min-h-11 items-center underline-offset-4 transition-colors hover:text-[var(--header-foreground)] hover:underline"
                 >
-                  Privacy & Cookie Settings
+                  Privacy Notice
                 </button>
               </li>
             </ul>

@@ -32,11 +32,11 @@ export const Route = createFileRoute("/resume")({
 function ResumePage() {
   return (
     <div className="resume-page">
-      <div className="mx-auto max-w-5xl px-5 py-14 sm:px-8 lg:py-20">
+      <div className="mx-auto max-w-5xl px-5 py-10 sm:px-8 lg:py-14">
         <ResumeHeader />
 
-        <div className="resume-layout mt-12 grid items-start gap-x-12 gap-y-10 lg:grid-cols-[minmax(0,1.4fr)_minmax(16rem,0.8fr)]">
-          <div className="space-y-12">
+        <div className="resume-layout mt-9 grid items-start gap-x-10 gap-y-8 lg:grid-cols-[minmax(0,1.4fr)_minmax(16rem,0.8fr)]">
+          <div className="space-y-9">
             <ResumeSection label="Profile" title="Professional summary">
               <div className="max-w-3xl space-y-4 text-base leading-relaxed text-muted-foreground">
                 {professionalSummary.map((p) => (
@@ -65,7 +65,7 @@ function ResumePage() {
             ) : null}
 
             <ResumeSection label="Skills" title="Technical skills">
-              <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-1">
                 {skillGroups.map((group) => (
                   <div key={group.id}>
                     <h3 className="font-mono text-xs tracking-[0.18em] text-muted-foreground uppercase">

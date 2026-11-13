@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://innocent-watsala.vercel.app/</loc></url>
   <url><loc>https://innocent-watsala.vercel.app/about</loc></url>
@@ -9,6 +9,8 @@
   <url><loc>https://innocent-watsala.vercel.app/projects/titanic-survival-analysis</loc></url>
   <url><loc>https://innocent-watsala.vercel.app/projects/running-local-llms-thinkpad-t480</loc></url>
   <url><loc>https://innocent-watsala.vercel.app/projects/crm-sales-inventory-dashboard</loc></url>
+  <url><loc>https://innocent-watsala.vercel.app/projects/sfo-air-traffic-cargo-statistics</loc></url>
+  <url><loc>https://innocent-watsala.vercel.app/projects/analytics-data-quality-pipeline</loc></url>
   <url><loc>https://innocent-watsala.vercel.app/resume</loc></url>
   <url><loc>https://innocent-watsala.vercel.app/contact</loc></url>
   <url><loc>https://innocent-watsala.vercel.app/privacy</loc></url>

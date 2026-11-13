@@ -1,10 +1,26 @@
 import { Link } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 const STORAGE_KEY = "privacy-notice-dismissed-v1";
 
 export function PrivacyNotice() {
   const [isVisible, setIsVisible] = useState(false);
+  const closeButtonRef = useRef<HTMLButtonElement | null>(null);
+  const triggerRef = useRef<HTMLElement | null>(null);
+
+  const dismissNotice = useCallback(() => {
+    try {
+      localStorage.setItem(STORAGE_KEY, "true");
+    } catch {
+      // The notice can still be dismissed if storage is unavailable.
+    }
+
+    setIsVisible(false);
+    if (triggerRef.current && document.contains(triggerRef.current)) {
+      triggerRef.current.focus();
+      triggerRef.current = null;
+    }
+  }, []);
 
   useEffect(() => {
     try {
@@ -13,7 +29,13 @@ export function PrivacyNotice() {
       setIsVisible(true);
     }
 
-    const openNotice = () => setIsVisible(true);
+    const openNotice = () => {
+      triggerRef.current = document.activeElement as HTMLElement | null;
+      setIsVisible(true);
+      window.requestAnimationFrame(() => {
+        closeButtonRef.current?.focus();
+      });
+    };
 
     window.addEventListener("open-privacy-notice", openNotice);
 
@@ -22,15 +44,14 @@ export function PrivacyNotice() {
     };
   }, []);
 
-  const dismissNotice = () => {
-    try {
-      localStorage.setItem(STORAGE_KEY, "true");
-    } catch {
-      // The notice can still be dismissed if storage is unavailable.
-    }
-
-    setIsVisible(false);
-  };
+  useEffect(() => {
+    if (!isVisible) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") dismissNotice();
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [isVisible, dismissNotice]);
 
   if (!isVisible) return null;
 
@@ -47,17 +68,19 @@ export function PrivacyNotice() {
           </h2>
 
           <p className="mt-2 text-sm leading-6 text-muted-foreground">
-            This website does not currently use analytics or advertising tracking tools. Essential
-            technologies may be used to operate and protect the website. Visit our policies to learn
-            more.
+            This website does not use analytics or advertising tracking tools. Your browser&apos;s{" "}
+            <code>localStorage</code> is used solely to remember if you dismiss this notice, and
+            standard server/CDN requests are handled to deliver the site. Visit our policies to
+            learn more.
           </p>
         </div>
 
         <button
+          ref={closeButtonRef}
           type="button"
           onClick={dismissNotice}
           aria-label="Close privacy notice"
-          className="text-xl leading-none text-muted-foreground transition-colors hover:text-foreground"
+          className="-mr-2 -mt-2 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-md text-xl leading-none text-muted-foreground transition-colors hover:text-foreground"
         >
           ×
         </button>
@@ -67,14 +90,14 @@ export function PrivacyNotice() {
         <div className="flex flex-wrap gap-4 text-xs">
           <Link
             to="/privacy"
-            className="text-muted-foreground underline underline-offset-4 hover:text-foreground"
+            className="inline-flex min-h-11 items-center text-muted-foreground underline underline-offset-4 hover:text-foreground"
           >
             Privacy Policy
           </Link>
 
           <Link
             to="/cookies"
-            className="text-muted-foreground underline underline-offset-4 hover:text-foreground"
+            className="inline-flex min-h-11 items-center text-muted-foreground underline underline-offset-4 hover:text-foreground"
           >
             Cookies Policy
           </Link>
@@ -83,9 +106,9 @@ export function PrivacyNotice() {
         <button
           type="button"
           onClick={dismissNotice}
-          className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+          className="min-h-11 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
         >
-          Continue
+          Got it
         </button>
       </div>
     </div>

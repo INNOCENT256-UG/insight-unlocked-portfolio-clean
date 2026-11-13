@@ -1,5 +1,7 @@
-import { Github, Mail, Printer } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { ArrowRight, Mail, Printer } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { GitHubLogo } from "@/components/TechIcons";
 import { profile } from "@/data/profile";
 import { resumeHeader } from "@/data/resume";
 
@@ -28,24 +30,31 @@ export function ResumeHeader() {
           </a>
         </li>
         <li className="flex items-center gap-2">
-          <Github className="h-4 w-4 text-signal" aria-hidden="true" />
+          <GitHubLogo className="h-4 w-4 text-signal" />
           <a className="underline-offset-4 hover:underline" href={github.href} target="_blank" rel="noreferrer">
             github.com/INNOCENT256-UG
           </a>
         </li>
       </ul>
 
-      <div className="resume-actions mt-8 flex flex-col gap-3 sm:flex-row">
+      <div className="resume-actions mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
         <Button
           size="lg"
           variant="outline"
           type="button"
+          className="rounded-sm"
           onClick={() => {
             if (typeof window !== "undefined") window.print();
           }}
         >
           <Printer className="h-4 w-4" aria-hidden="true" />
-          Print Resume
+          Print / Save PDF
+        </Button>
+        <Button asChild size="lg" className="rounded-sm cta-gradient">
+          <Link to="/projects">
+            View Case Studies
+            <ArrowRight className="h-4 w-4" aria-hidden="true" />
+          </Link>
         </Button>
       </div>
     </header>

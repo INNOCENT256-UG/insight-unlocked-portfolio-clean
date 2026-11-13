@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="Architecture diagram of the Analytics Data Quality Pipeline showing four separate Python scripts, JSON configuration files, and Pytest suite">
+  <rect width="1200" height="675" fill="#F8FAFC"/>
+  <rect x="32" y="32" width="1136" height="611" rx="16" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
+
+  <text x="72" y="92" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" font-weight="600" fill="#0D7A72" letter-spacing="2">REPOSITORY ARCHITECTURE · SEPARATE SCRIPTS</text>
+  <text x="72" y="132" font-family="system-ui, -apple-system, sans-serif" font-size="30" font-weight="700" fill="#14181F">Analytics Data Quality Pipeline</text>
+  <text x="72" y="164" font-family="system-ui, -apple-system, sans-serif" font-size="17" fill="#525B69">Reusable Python + Pandas preparation modules driven by dataset-specific JSON rules</text>
+
+  <!-- Config box -->
+  <rect x="72" y="204" width="1056" height="84" rx="12" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.5"/>
+  <text x="100" y="236" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="600" fill="#0D7A72">CONFIG/ (JSON RULES)</text>
+  <rect x="100" y="248" width="210" height="28" rx="6" fill="#FFFFFF" stroke="#CBD5E1"/>
+  <text x="205" y="267" text-anchor="middle" font-family="ui-monospace, monospace" font-size="13" fill="#1E293B">b2b_invoices.json</text>
+  <rect x="330" y="248" width="220" height="28" rx="6" fill="#FFFFFF" stroke="#CBD5E1"/>
+  <text x="440" y="267" text-anchor="middle" font-family="ui-monospace, monospace" font-size="13" fill="#1E293B">clothing_sales.json</text>
+  <rect x="570" y="248" width="220" height="28" rx="6" fill="#FFFFFF" stroke="#CBD5E1"/>
+  <text x="680" y="267" text-anchor="middle" font-family="ui-monospace, monospace" font-size="13" fill="#1E293B">hotel_bookings.json</text>
+
+  <!-- Four separate script cards -->
+  <g font-family="system-ui, -apple-system, sans-serif">
+    <!-- 1. Inspect -->
+    <rect x="72" y="320" width="240" height="170" rx="12" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+    <rect x="72" y="320" width="240" height="6" rx="3" fill="#0D7A72"/>
+    <text x="92" y="356" font-family="ui-monospace, monospace" font-size="12" fill="#0D7A72">01 · INSPECT</text>
+    <text x="92" y="384" font-family="ui-monospace, monospace" font-size="16" font-weight="700" fill="#14181F">inspect_data.py</text>
+    <text x="92" y="416" font-size="14" fill="#525B69">Examine dataset shape,</text>
+    <text x="92" y="438" font-size="14" fill="#525B69">columns, types &amp; raw</text>
+    <text x="92" y="460" font-size="14" fill="#525B69">structure before edits.</text>
+
+    <!-- 2. Profile -->
+    <rect x="344" y="320" width="240" height="170" rx="12" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+    <rect x="344" y="320" width="240" height="6" rx="3" fill="#0D7A72"/>
+    <text x="364" y="356" font-family="ui-monospace, monospace" font-size="12" fill="#0D7A72">02 · PROFILE</text>
+    <text x="364" y="384" font-family="ui-monospace, monospace" font-size="16" font-weight="700" fill="#14181F">profile_data.py</text>
+    <text x="364" y="416" font-size="14" fill="#525B69">Generate descriptive</text>
+    <text x="364" y="438" font-size="14" fill="#525B69">metrics &amp; flag potential</text>
+    <text x="364" y="460" font-size="14" fill="#525B69">quality concerns.</text>
+
+    <!-- 3. Clean -->
+    <rect x="616" y="320" width="240" height="170" rx="12" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+    <rect x="616" y="320" width="240" height="6" rx="3" fill="#0D7A72"/>
+    <text x="636" y="356" font-family="ui-monospace, monospace" font-size="12" fill="#0D7A72">03 · CLEAN</text>
+    <text x="636" y="384" font-family="ui-monospace, monospace" font-size="16" font-weight="700" fill="#14181F">clean_data.py</text>
+    <text x="636" y="416" font-size="14" fill="#525B69">Trim whitespace, cast</text>
+    <text x="636" y="438" font-size="14" fill="#525B69">numeric/date types &amp;</text>
+    <text x="636" y="460" font-size="14" fill="#525B69">report duplicates.</text>
+
+    <!-- 4. Validate -->
+    <rect x="888" y="320" width="240" height="170" rx="12" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+    <rect x="888" y="320" width="240" height="6" rx="3" fill="#65A30D"/>
+    <text x="908" y="356" font-family="ui-monospace, monospace" font-size="12" fill="#4D7C0F">04 · VALIDATE</text>
+    <text x="908" y="384" font-family="ui-monospace, monospace" font-size="16" font-weight="700" fill="#14181F">validate_data.py</text>
+    <text x="908" y="416" font-size="14" fill="#525B69">Check dataset against</text>
+    <text x="908" y="438" font-size="14" fill="#525B69">JSON rules &amp; output</text>
+    <text x="908" y="460" font-size="14" fill="#525B69">validation reports.</text>
+  </g>
+
+  <!-- Arrows -->
+  <path d="M316 405h24M588 405h24M860 405h24" stroke="#94A3B8" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Pytest footer bar -->
+  <rect x="72" y="522" width="1056" height="82" rx="12" fill="#181C22"/>
+  <text x="100" y="556" font-family="ui-monospace, monospace" font-size="13" font-weight="600" fill="#2DD4BF">TESTS/TEST_CLEAN_DATA.PY</text>
+  <text x="100" y="582" font-family="system-ui, sans-serif" font-size="15" fill="#E2E8F0">Automated Pytest suite verifying DataFrame preservation, whitespace trimming, type casting &amp; cleaning report structure (10 tests)</text>
+</svg>

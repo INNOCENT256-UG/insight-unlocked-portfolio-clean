@@ -11,6 +11,20 @@ export type CaseStudySection = {
   body: string[];
 };
 
+/**
+ * A real visual exported from the project's own repository (chart, dashboard
+ * or screenshot). Never use placeholder or invented imagery here.
+ */
+export type ProjectImage = {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  caption?: string;
+  /** Case-study section heading this visual is shown after. */
+  section?: string;
+};
+
 export type Project = {
   slug: string;
   title: string;
@@ -23,7 +37,15 @@ export type Project = {
   metrics: { label: string; value: string }[];
   links: { github?: string; demo?: string };
   caseStudy: CaseStudySection[];
+  cover?: ProjectImage;
+  gallery?: ProjectImage[];
 };
+
+const img = (slug: string, file: string, width: number, height: number) => ({
+  src: `/images/projects/${slug}/${file}.webp`,
+  width,
+  height,
+});
 
 export const projects: Project[] = [
   {
@@ -54,6 +76,37 @@ export const projects: Project[] = [
       github:
         "https://github.com/INNOCENT256-UG/ANALYZING-PAKISTAN-FOOD-MARKETS-AND-IT-S-REVELATE-CITIES",
     },
+    cover: {
+      ...img("pakistan-food-markets-analysis", "revenue-by-city", 1600, 886),
+      alt: "Horizontal bar chart of total revenue by city, from Hyderabad at PKR 1,608,801 (12.0%) down to Peshawar at PKR 1,032,082 (7.7%), with the city average marked.",
+      caption: "Revenue by city against the national average.",
+    },
+    gallery: [
+      {
+        ...img("pakistan-food-markets-analysis", "kpi-cards", 1400, 560),
+        alt: "KPI cards: 1,100 records, PKR 13,423,064 total revenue, PKR 371.8 average price per kg, Hyderabad as top revenue city, Mutton as most expensive item, and 29.9% of items above average price.",
+        caption: "Executive KPI cards computed from the full 1,100-record dataset.",
+        section: "Data",
+      },
+      {
+        ...img("pakistan-food-markets-analysis", "price-by-category", 1600, 810),
+        alt: "Bar chart of average price per kg by category, grouped into premium, mid-range and affordable tiers, from Beverage at PKR 911.6/kg to Vegetable at PKR 94.9/kg.",
+        caption: "Average price per kilogram by category, classified into price tiers.",
+        section: "Analysis",
+      },
+      {
+        ...img("pakistan-food-markets-analysis", "revenue-concentration", 1600, 752),
+        alt: "Pareto chart of revenue by city with a cumulative percentage line and an 80% reference line.",
+        caption: "Revenue concentration (Pareto view) across the ten cities.",
+        section: "Analysis",
+      },
+      {
+        ...img("pakistan-food-markets-analysis", "price-volatility", 1600, 746),
+        alt: "Bar chart of price range (maximum minus minimum, PKR per kg) for each food category.",
+        caption: "Price range by category, used as the volatility measure.",
+        section: "Insights",
+      },
+    ],
     caseStudy: [
       {
         heading: "Problem",
@@ -130,12 +183,43 @@ export const projects: Project[] = [
     metrics: [
       { label: "Customer records", value: "7,043" },
       { label: "Churn rate", value: "26.5%" },
-      { label: "Projected annual savings", value: "$328K" },
+      { label: "Illustrative retained revenue (scenario)", value: "$328K" },
     ],
     links: {
       github:
         "https://github.com/INNOCENT256-UG/WA_Fn-UseC_-Telco-Customer-Churn",
     },
+    cover: {
+      ...img("telco-customer-churn-analysis", "power-bi-summary", 1049, 572),
+      alt: "Power BI summary report with churn count, churn rate and charges broken down by contract type, internet service and payment method.",
+      caption: "Power BI summary report of churn by contract, internet service and payment method.",
+    },
+    gallery: [
+      {
+        ...img("telco-customer-churn-analysis", "churn-dashboard", 1289, 352),
+        alt: "Telco customer churn dashboard header with filters for contract, internet, payment and gender, and KPI tiles for customers, churn rate, average monthly charge and monthly revenue at risk.",
+        caption: "Interactive churn dashboard with contract, internet, payment and gender filters.",
+        section: "Process",
+      },
+      {
+        ...img("telco-customer-churn-analysis", "churn-by-contract", 1000, 600),
+        alt: "Grouped bar chart of churn percentage by contract type, showing month-to-month contracts with by far the highest churn.",
+        caption: "Churn rate by contract type.",
+        section: "Analysis",
+      },
+      {
+        ...img("telco-customer-churn-analysis", "churn-by-internet-service", 1000, 600),
+        alt: "Grouped bar chart of churn percentage by internet service type, showing fiber optic with the highest churn, followed by DSL and customers without internet.",
+        caption: "Churn rate by internet service type.",
+        section: "Analysis",
+      },
+      {
+        ...img("telco-customer-churn-analysis", "correlation-matrix", 1366, 648),
+        alt: "Correlation heatmap of SeniorCitizen, tenure, MonthlyCharges, TotalCharges and churn, showing a 0.83 correlation between tenure and TotalCharges.",
+        caption: "Feature correlation matrix.",
+        section: "Insights",
+      },
+    ],
     caseStudy: [
       {
         heading: "Problem",
@@ -218,6 +302,25 @@ export const projects: Project[] = [
       github:
         "https://github.com/INNOCENT256-UG/TITANIC_DATA_ANALYSIS",
     },
+    cover: {
+      ...img("titanic-survival-analysis", "survival-overview", 1600, 1064),
+      alt: "Six-panel survival overview: survival count, survival rate by gender, by passenger class and by embarkation port, plus age and fare distributions by survival.",
+      caption: "Survival overview across gender, class, age, fare and port of embarkation.",
+    },
+    gallery: [
+      {
+        ...img("titanic-survival-analysis", "analysis-report", 1054, 602),
+        alt: "Text report of survival rate by gender (female 74.20%, male 18.89%) and survival by gender within each passenger class.",
+        caption: "Generated analysis report: survival by gender and by class within gender.",
+        section: "Analysis",
+      },
+      {
+        ...img("titanic-survival-analysis", "model-comparison", 1600, 952),
+        alt: "Bar chart comparing classification model accuracy against an 80% threshold.",
+        caption: "Model accuracy comparison against an 80% threshold.",
+        section: "Insights",
+      },
+    ],
     caseStudy: [
       {
         heading: "Problem",
@@ -298,6 +401,25 @@ export const projects: Project[] = [
       github:
         "https://github.com/INNOCENT256-UG/Running-Local-LLMs-on-a-ThinkPad-T480",
     },
+    cover: {
+      ...img("running-local-llms-thinkpad-t480", "open-webui-models", 1103, 634),
+      alt: "Open WebUI chat interface with the model selector open, listing locally installed models including llama3.1, mistral, phi4, deepseek-r1 and qwen3.",
+      caption: "Open WebUI running against locally installed Ollama models.",
+    },
+    gallery: [
+      {
+        ...img("running-local-llms-thinkpad-t480", "docker-containers", 1366, 386),
+        alt: "Docker Desktop containers view showing the open-webui container running on port 3000:8080 with low CPU and memory usage.",
+        caption: "Open WebUI deployed as a Docker container.",
+        section: "Environment",
+      },
+      {
+        ...img("running-local-llms-thinkpad-t480", "local-ai-workflow", 1161, 1354),
+        alt: "Infographic of how the local AI assistant works: browser to Open WebUI, Ollama, local models and back, plus seven steps from pulling a model to chatting offline on CPU and RAM.",
+        caption: "How the local AI assistant works, from model download to offline use.",
+        section: "Process",
+      },
+    ],
     caseStudy: [
       {
         heading: "Problem",
@@ -365,6 +487,25 @@ export const projects: Project[] = [
       github:
         "https://github.com/INNOCENT256-UG/INVENTORY-MANAGEMENT",
     },
+    cover: {
+      ...img("crm-sales-inventory-dashboard", "inventory-dashboard", 867, 566),
+      alt: "Excel inventory management dashboard with KPI tiles (49.8% average profit margin, 141 low-stock items, 5 out-of-stock items) and a category performance table.",
+      caption: "Inventory dashboard sheet generated with Python and OpenPyXL (simulated data).",
+    },
+    gallery: [
+      {
+        ...img("crm-sales-inventory-dashboard", "stock-alerts", 1229, 526),
+        alt: "Stock alert management sheet summarising out-of-stock and low-stock items, with a table of products below their reorder level, highlighted as Low Stock.",
+        caption: "Stock alert sheet with conditional formatting for items below reorder level.",
+        section: "Process",
+      },
+      {
+        ...img("crm-sales-inventory-dashboard", "best-selling-products", 887, 476),
+        alt: "Best-selling products table listing product, category, sales quantity, revenue, profit and profit margin.",
+        caption: "Best-selling products by quantity, with revenue, profit and margin.",
+        section: "Analysis",
+      },
+    ],
     caseStudy: [
       {
         heading: "Problem",
@@ -410,6 +551,181 @@ export const projects: Project[] = [
         body: [
           "Delivered CRM_Sales_Inventory_Dashboard.xlsx plus the simulated CSV inputs and chart exports, regenerated by a single Python run so the reporting cycle needs no manual assembly.",
           "Each view targets a role: stock health for executives, reorder and procurement for operations, demand and movement for analysts, warehouse distribution for logistics, and inventory turnover for finance.",
+        ],
+      },
+    ],
+  },
+
+  {
+    slug: "sfo-air-traffic-cargo-statistics",
+    title: "SFO Air Traffic & Cargo Statistics",
+    category: "Data Analytics",
+    problem:
+      "San Francisco International Airport (SFO) cargo activity spans 26 years, 134+ airlines and 9 geographic regions, but raw operational exports contain Excel serial dates and codeshare overlaps that make carrier, regional and fleet benchmarking unreliable.",
+    tools: [
+      "Python",
+      "Pandas",
+      "NumPy",
+      "OpenPyXL",
+      "Excel",
+      "Data Visualization",
+    ],
+    summary:
+      "Analysed 58,346 SFO air cargo records from July 1999 to December 2025, building a validated dataset, interactive dashboard and 7-sheet Excel workbook covering volume trends, carrier share, regional shifts and aircraft efficiency.",
+    insight:
+      "United Airlines leads all-time cargo tonnage at SFO alongside major Asia-Pacific carriers Korean Air Lines and EVA Airways; US domestic traffic holds the largest overall share while Asia is the #1 international region, and dedicated freighters move substantially more tonnage than passenger belly cargo.",
+    outcome:
+      "Delivered a 7-sheet executive Excel workbook (Executive Summary, Cleaned Data, Annual Trend, GEO Region Analysis, Top Airlines, Cargo Breakdown and Data Quality Log) backed by a 100% pass weight-conversion audit across all 58,346 records.",
+    metrics: [
+      { label: "Cargo records", value: "58,346" },
+      { label: "Historical span", value: "1999–2025" },
+      { label: "Airlines tracked", value: "134" },
+    ],
+    links: {
+      github:
+        "https://github.com/INNOCENT256-UG/-SFO-Air-Traffic-Cargo-Statistics-Data-Analysis-Project",
+    },
+    cover: {
+      ...img("sfo-air-traffic-cargo-statistics", "sfo-cargo-tracker", 1326, 592),
+      alt: "SFO Air Cargo Tracker dashboard showing 13.93M total metric tons, 515.8K average annual tonnage, peak year 2000, -4.5% latest YoY growth, and filters for year range, traffic type, cargo type, aircraft type and region.",
+      caption: "SFO Air Cargo Tracker dashboard covering 58,346 operational records (1999–2025).",
+    },
+    gallery: [
+      {
+        ...img("sfo-air-traffic-cargo-statistics", "import-export-trends", 1600, 796),
+        alt: "Area line chart comparing deplaned imports and enplaned exports at SFO from 1999 to 2025, with a vertical marker at 2020 for COVID-19.",
+        caption: "Import (deplaned) vs export (enplaned) cargo volume trends, 1999–2025.",
+        section: "Analysis",
+      },
+      {
+        ...img("sfo-air-traffic-cargo-statistics", "geo-region-heatmap", 1600, 990),
+        alt: "Heatmap of normalized geographic region market share by decade from the 1990s through the 2020s, led by US and Asia.",
+        caption: "Geographic region market share normalized by decade.",
+        section: "Analysis",
+      },
+      {
+        ...img("sfo-air-traffic-cargo-statistics", "top10-airlines-share", 1600, 1470),
+        alt: "Pie chart of top 10 airlines by all-time cargo market share at SFO, led by United Airlines, Federal Express, Korean Air Lines and EVA Airways.",
+        caption: "Top 10 airlines by all-time cargo volume market share at SFO.",
+        section: "Insights",
+      },
+      {
+        ...img("sfo-air-traffic-cargo-statistics", "cargo-type-composition", 1600, 796),
+        alt: "Chart breaking down SFO cargo type composition across Cargo, Mail and Express.",
+        caption: "Cargo type composition across Cargo, Mail and Express.",
+        section: "Insights",
+      },
+    ],
+    caseStudy: [
+      {
+        heading: "Problem",
+        body: [
+          "Airport operations, airline partners and cargo logistics teams need to know which carriers, regions, cargo types and aircraft configurations drive long-term volume.",
+          "Raw SFO operational exports stored dates as Excel serial numbers and mixed operating and published codeshare airlines, preventing accurate time-series and carrier-level reporting without prior cleaning and validation.",
+        ],
+      },
+      {
+        heading: "Data",
+        body: [
+          "58,346 records of San Francisco International Airport (SFO) air cargo activity spanning 26 years (July 1999 – December 2025) across 134 airlines, 9 geographic regions, 3 cargo types (Cargo, Mail, Express) and 3 aircraft types (Freighter, Passenger, Combi).",
+          "Quality audit confirmed 0 duplicate rows, 0 missing values across all 15 columns, 0 negative cargo weights and 100% valid YYYYMM activity periods.",
+        ],
+      },
+      {
+        heading: "Process",
+        body: [
+          "Converted Excel serial dates to datetime values, cast Activity Period to string and derived Year, Month and Month_Name columns for annual and seasonal analysis.",
+          "Added an Is_Codeshare boolean flag identifying 1,756 codeshare rows (3%) and validated LBS-to-metric-ton conversions across all 58,346 rows within a 1% tolerance.",
+          "Packaged outputs into a 7-sheet Excel workbook with automated formatting and charts via Python and OpenPyXL, alongside an interactive HTML dashboard.",
+        ],
+      },
+      {
+        heading: "Analysis",
+        body: [
+          "Annual & directional trends: tracked year-over-year tonnage growth and enplaned (export) vs deplaned (import) flows, capturing the sharp 2020 pandemic drop and 2022–2023 recovery.",
+          "Geographic & carrier breakdown: US domestic ranks #1 overall while Asia leads international regions followed by Europe; United Airlines leads all-time tonnage, with Korean Air Lines and EVA Airways leading international carriers.",
+          "Cargo & fleet mix: general Cargo dominates total volume, and dedicated Freighter aircraft carry significantly more tonnage than passenger belly cargo.",
+        ],
+      },
+      {
+        heading: "Outcome",
+        body: [
+          "Delivered a 7-sheet decision-ready workbook (Executive Summary, Cleaned Data, Annual Trend, GEO Region Analysis, Top Airlines, Cargo Breakdown and Data Quality Log) with full auditability.",
+          "Limitations: the public operational dataset does not include freight rates, revenue or operating cost figures, so findings measure cargo tonnage and market share rather than financial profitability.",
+        ],
+      },
+    ],
+  },
+
+  {
+    slug: "analytics-data-quality-pipeline",
+    title: "Analytics Data Quality Pipeline",
+    category: "Python",
+    problem:
+      "Raw business CSVs arrive with whitespace, blank strings, invalid dates, inconsistent types and duplicate rows — rewriting bespoke cleaning scripts for every new dataset slows down analysis and introduces silent reporting errors.",
+    tools: [
+      "Python",
+      "Pandas",
+      "JSON",
+      "Pytest",
+      "Git",
+    ],
+    summary:
+      "Built a reusable Python data-preparation toolkit with separate scripts for inspection, profiling, cleaning and validation, driven by dataset-specific JSON configuration files and verified with automated Pytest checks.",
+    insight:
+      "Separating dataset rules into JSON configs (tested across B2B invoices, clothing sales and hotel bookings) lets the same inspection, profiling, cleaning and validation scripts adapt to new schemas without rewriting core Python logic.",
+    outcome:
+      "Delivered four modular Python scripts, three dataset configuration templates and a 10-test Pytest cleaning suite. The four activities run as separate scripts today; an integrated single-command runner is documented as a future step.",
+    metrics: [
+      { label: "Core scripts", value: "4" },
+      { label: "JSON configs", value: "3" },
+      { label: "Pytest checks", value: "10 passed" },
+    ],
+    links: {
+      github:
+        "https://github.com/INNOCENT256-UG/analytics-data-quality-pipeline",
+    },
+    cover: {
+      src: "/images/projects/analytics-data-quality-pipeline/pipeline-architecture.svg",
+      width: 1200,
+      height: 675,
+      alt: "Architecture diagram of the Analytics Data Quality Pipeline showing four separate Python scripts (inspect_data.py, profile_data.py, clean_data.py, validate_data.py), three JSON config files, and the Pytest suite.",
+      caption: "Repository architecture diagram: four separate Python scripts configured by JSON rules and covered by Pytest.",
+    },
+    caseStudy: [
+      {
+        heading: "Problem",
+        body: [
+          "Trustworthy dashboards and KPIs depend on clean source data, yet raw CSV exports frequently contain trailing whitespace, blank strings masquerading as values, malformed dates and duplicate rows.",
+          "The goal was a repeatable, rule-driven preparation process that avoids rewriting one-off cleaning scripts for each new dataset.",
+        ],
+      },
+      {
+        heading: "Data",
+        body: [
+          "Configured and structured around three distinct business dataset schemas in config/: b2b_invoices.json (invoice, customer, product, revenue, cost and margin), clothing_sales.json (product attributes, pricing, discounts, ratings and stock) and hotel_bookings.json.",
+          "Each JSON file defines column expectations, numeric/date casting targets and validation rules external to the Python scripts.",
+        ],
+      },
+      {
+        heading: "Process",
+        body: [
+          "Implemented four focused, standalone Python modules under src/: inspect_data.py (dataset structure), profile_data.py (descriptive profiling and quality flags), clean_data.py (whitespace trimming, blank-to-null conversion, numeric/date parsing and duplicate reporting) and validate_data.py (rule-based checks and reporting).",
+          "Wrote automated unit tests in tests/test_clean_data.py using Pytest to verify DataFrame immutability, whitespace trimming, null conversion, type casting, missing-column reporting and cleaning report structure.",
+        ],
+      },
+      {
+        heading: "Analysis",
+        body: [
+          "All 10 automated cleaning tests in tests/test_clean_data.py passed in the development environment, confirming consistent behavior on valid, invalid and missing-column edge cases.",
+          "Externalizing schema rules into JSON makes it straightforward to onboard a new CSV domain without modifying the cleaning or validation code.",
+        ],
+      },
+      {
+        heading: "Outcome",
+        body: [
+          "Delivered a documented, reusable data-quality foundation with inspection, profiling, cleaning, validation and automated testing.",
+          "Scope & limitations: the repository implements the four activities as separate Python scripts rather than a unified end-to-end runner, and current Pytest coverage focuses on clean_data.py with validation and profiling tests planned next.",
         ],
       },
     ],

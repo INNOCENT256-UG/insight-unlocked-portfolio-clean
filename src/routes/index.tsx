@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import {
   jsonLdScript,
-  personSchema,
   webPageSchema,
 } from "@/lib/structured-data";
 import { About } from "@/components/About";
@@ -23,7 +22,6 @@ export const Route = createFileRoute("/")({
     ],
     links: [{ rel: "canonical", href: absoluteUrl() }],
     scripts: [
-      jsonLdScript(personSchema),
       jsonLdScript(webPageSchema({ path: "/", name: title, description })),
     ],
   }),

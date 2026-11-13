@@ -6,18 +6,18 @@
 
 /*
  * Design system — "Data Intelligence" portfolio.
- * Editorial ivory + ink + burgundy signal accent.
- * All colors are oklch semantic tokens. Never hardcode colors in components.
+ * Crisp white/slate light surfaces + dark charcoal header + teal/lime signal accents.
+ * Never hardcode colors in components; use semantic tokens.
  */
 
 @theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --radius-2xl: calc(var(--radius) + 8px);
-  --radius-3xl: calc(var(--radius) + 12px);
-  --radius-4xl: calc(var(--radius) + 16px);
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 4px;
+  --radius-xl: 6px;
+  --radius-2xl: 8px;
+  --radius-3xl: 10px;
+  --radius-4xl: 12px;
 
   --font-display: "DM Serif Display", ui-serif, Georgia, serif;
   --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
@@ -72,33 +72,40 @@
 }
 
 :root {
-  --radius: 0.5rem;
+  --radius: 0.25rem;
 
-  --background: #F8F5EF;
-  --foreground: #211D1A;
-  --surface: #F1EBE2;
-  --card: #FCFAF6;
-  --card-foreground: #211D1A;
-  --popover: #FCFAF6;
-  --popover-foreground: #211D1A;
+  --background: #FFFFFF;
+  --foreground: #14181F;
+  --surface: #F6F8FA;
+  --card: #FFFFFF;
+  --card-foreground: #14181F;
+  --popover: #FFFFFF;
+  --popover-foreground: #14181F;
 
-  --primary: #211D1A;
-  --primary-foreground: #F8F5EF;
-  --secondary: #F1EBE2;
-  --secondary-foreground: #211D1A;
-  --muted: #F3EEE6;
-  --muted-foreground: #625C55;
-  --accent: #F0DDD7;
-  --accent-foreground: #6E3328;
+  --header: #181C22;
+  --header-foreground: #F8FAFC;
+  --header-muted: #9CA3AF;
+  --header-border: rgb(255 255 255 / 10%);
 
-  --signal: #9A4938;
-  --signal-foreground: #F8F5EF;
+  --primary: #14181F;
+  --primary-foreground: #FFFFFF;
+  --secondary: #F1F5F9;
+  --secondary-foreground: #1E293B;
+  --muted: #F1F5F9;
+  --muted-foreground: #525B69;
+  --accent: #E6F7F5;
+  --accent-foreground: #0F524C;
+
+  --signal: #0D7A72;
+  --signal-bright: #2DD4BF;
+  --signal-lime: #A3E635;
+  --signal-foreground: #FFFFFF;
 
   --destructive: oklch(0.55 0.19 27);
   --destructive-foreground: oklch(0.99 0.003 95);
-  --border: #E6DDD1;
-  --input: #E6DDD1;
-  --ring: #9A4938;
+  --border: #E2E8F0;
+  --input: #CBD5E1;
+  --ring: #0D7A72;
 
   --chart-1: oklch(0.55 0.09 195);
   --chart-2: oklch(0.35 0.04 245);
@@ -106,19 +113,19 @@
   --chart-4: oklch(0.62 0.11 60);
   --chart-5: oklch(0.75 0.05 240);
 
-  --sidebar: #F8F5EF;
-  --sidebar-foreground: #211D1A;
-  --sidebar-primary: #211D1A;
-  --sidebar-primary-foreground: #F8F5EF;
-  --sidebar-accent: #F0DDD7;
-  --sidebar-accent-foreground: #6E3328;
-  --sidebar-border: #E6DDD1;
-  --sidebar-ring: #9A4938;
+  --sidebar: #FFFFFF;
+  --sidebar-foreground: #14181F;
+  --sidebar-primary: #14181F;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #E6F7F5;
+  --sidebar-accent-foreground: #0F524C;
+  --sidebar-border: #E2E8F0;
+  --sidebar-ring: #0D7A72;
 
-  --grid-line: rgb(33 29 26 / 7%);
-  --shadow-card: 0 1px 2px rgb(33 29 26 / 4%), 0 12px 32px -20px rgb(33 29 26 / 20%);
-  --shadow-lift: 0 2px 4px rgb(33 29 26 / 5%), 0 24px 48px -24px rgb(154 73 56 / 24%);
-  --shadow-portrait: 0 20px 60px -25px rgb(154 73 56 / 38%);
+  --grid-line: rgb(20 24 31 / 5%);
+  --shadow-card: 0 1px 2px rgb(15 23 42 / 4%), 0 10px 26px -18px rgb(15 23 42 / 14%);
+  --shadow-lift: 0 4px 10px rgb(15 23 42 / 6%), 0 20px 40px -20px rgb(13 122 114 / 18%);
+  --shadow-portrait: 0 16px 40px -18px rgb(13 122 114 / 32%);
 }
 
 .dark {
@@ -246,6 +253,65 @@
 /* Legacy aliases */
 .profile-orbit { animation: orbit-turn 26s linear infinite; }
 .profile-orbit-reverse { animation: orbit-turn-reverse 40s linear infinite; }
+
+@keyframes marquee-rtl {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+@keyframes float-gentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marquee-rtl var(--marquee-duration, 36s) linear infinite;
+}
+
+.marquee-group:hover .marquee-track,
+.marquee-group:focus-within .marquee-track,
+.marquee-group[data-paused="true"] .marquee-track {
+  animation-play-state: paused;
+}
+
+.float-gentle {
+  animation: float-gentle 5.5s ease-in-out infinite;
+}
+
+.float-gentle-delay {
+  animation: float-gentle 6.5s ease-in-out 1.4s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none !important;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .marquee-duplicate {
+    display: none !important;
+  }
+}
+
+@utility cta-gradient {
+  background-color: var(--signal);
+  color: var(--signal-foreground);
+  font-weight: 600;
+  border: 0;
+  transition:
+    background-color 180ms ease,
+    transform 180ms ease;
+
+  &:hover {
+    background-color: #0b665f;
+    transform: translateY(-1px);
+  }
+}
 
 @utility card-elevate {
   box-shadow: var(--shadow-card);

@@ -31,28 +31,29 @@ export function Resume() {
 
         <div className="mt-8 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
           <Reveal>
-            <div
-              role="radiogroup"
-              aria-label="Choose a professional profile"
-              className="space-y-3"
-            >
+            <fieldset className="space-y-3">
+              <legend className="sr-only">Choose a professional profile</legend>
               {resumeVersions.map((version) => {
                 const active = version.id === selectedId;
 
                 return (
-                  <button
+                  <label
                     key={version.id}
-                    type="button"
-                    role="radio"
-                    aria-checked={active}
-                    onClick={() => setSelectedId(version.id)}
                     className={cn(
-                      "w-full rounded-xl border bg-card p-5 text-left transition-colors",
+                      "block w-full cursor-pointer rounded-xl border bg-card p-5 text-left transition-colors focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2",
                       active
                         ? "border-signal"
                         : "border-border hover:border-foreground/25",
                     )}
                   >
+                    <input
+                      type="radio"
+                      name="resume-profile"
+                      value={version.id}
+                      checked={active}
+                      onChange={() => setSelectedId(version.id)}
+                      className="sr-only"
+                    />
                     <div className="flex items-center justify-between gap-3">
                       <span className="font-display text-base font-semibold">
                         {version.title}
@@ -68,10 +69,10 @@ export function Resume() {
                     <p className="mt-1 text-sm text-muted-foreground">
                       {version.summary}
                     </p>
-                  </button>
+                  </label>
                 );
               })}
-            </div>
+            </fieldset>
           </Reveal>
 
           <Reveal delay={100}>

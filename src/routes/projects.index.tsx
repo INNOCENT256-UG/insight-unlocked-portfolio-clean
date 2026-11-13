@@ -33,7 +33,7 @@ function ProjectsPage() {
         title="Analytical work, explained end to end"
         description="Problem → Data → Process → Analysis → Insights → Outcome. Every case study follows the same structure."
       />
-      <Projects />
+      <Projects heading={false} />
     </>
   );
 }

@@ -6,7 +6,7 @@ import { absoluteUrl, socialMeta } from "@/lib/site";
 
 const title = "Contact Innocent Watsala — Data Analyst";
 const description =
-  "Get in touch about data analytics, business intelligence, reporting or dashboard work. Email, LinkedIn, GitHub and a direct message form.";
+  "Get in touch about data analytics, business intelligence, reporting or dashboard work via email, GitHub, or the browser email-draft helper.";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -33,7 +33,7 @@ function ContactPage() {
         title="Let's turn data into something useful."
         description="Open to data analytics, business intelligence and reporting opportunities."
       />
-      <Contact />
+      <Contact heading={false} />
     </>
   );
 }

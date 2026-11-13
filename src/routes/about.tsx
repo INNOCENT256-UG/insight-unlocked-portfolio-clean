@@ -33,7 +33,7 @@ function AboutPage() {
         title="Data, in service of decisions"
         description="A short professional story: where the focus is now, and how it got there."
       />
-      <About withCta detailed />
+      <About withCta showApproach />
     </>
   );
 }

@@ -14,13 +14,15 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 
-import { jsonLdScript, organizationSchema, websiteSchema } from "@/lib/structured-data";
+import { jsonLdScript, organizationSchema, personSchema, websiteSchema } from "@/lib/structured-data";
 import { SITE_URL, SOCIAL_IMAGE_URL } from "@/lib/site";
 import { PrivacyNotice } from "@/components/PrivacyNotice";
 
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
+      <title>Page not found — Innocent Watsala</title>
+      <meta name="robots" content="noindex" />
       <div className="max-w-md text-center">
         <h1 className="text-7xl font-bold text-foreground">404</h1>
         <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
@@ -107,7 +109,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: SOCIAL_IMAGE_URL },
     ],
-    scripts: [jsonLdScript(organizationSchema), jsonLdScript(websiteSchema)],
+    scripts: [
+      jsonLdScript(personSchema),
+      jsonLdScript(organizationSchema),
+      jsonLdScript(websiteSchema),
+    ],
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
@@ -145,9 +151,15 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <div className="flex min-h-screen flex-col">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-sm focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-foreground focus:shadow-lg focus:ring-2 focus:ring-ring"
+        >
+          Skip to main content
+        </a>
         <Navbar />
 
-        <main className="flex-1">
+        <main id="main-content" tabIndex={-1} className="flex-1 outline-none">
           <Outlet />
         </main>
 

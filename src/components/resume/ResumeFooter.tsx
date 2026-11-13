@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 
 export function ResumeFooter() {
   return (
-    <div className="resume-actions mt-16 rounded-xl border border-border bg-card p-8 text-center">
+    <div className="resume-actions mt-12 border-t border-border pt-8 text-center">
       <h2 className="font-display text-2xl font-semibold">Want to see how I apply these skills?</h2>
       <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
         <Button asChild size="lg">

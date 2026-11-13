@@ -10,6 +10,8 @@ export const personSchema = {
   name: profile.name,
   jobTitle: profile.role,
   description: profile.intro,
+  image: absoluteUrl("/images/innocent-portrait.jpg"),
+  sameAs: [profile.links.github.href],
   knowsAbout: [
     "Data Analytics",
     "Business Intelligence",

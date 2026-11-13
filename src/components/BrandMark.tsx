@@ -34,24 +34,21 @@ export function IMark({ className }: { className?: string }) {
 
 export function Wordmark({
   className,
-  showLabel = true,
 }: {
   className?: string;
   showLabel?: boolean;
+  inverted?: boolean;
 }) {
   return (
-    <span className={cn("flex items-center gap-2.5", className)}>
-      <IMark className="h-7 w-7 shrink-0 text-foreground transition-colors" />
-      <span className="flex items-baseline gap-2.5">
-        <span className="font-display text-[1.6rem] leading-none tracking-tight">
-          Innocent<span className="text-signal">.</span>
-        </span>
-        {showLabel ? (
-          <span className="hidden border-l border-border pl-2.5 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground sm:inline">
-            Data Analyst
-          </span>
-        ) : null}
-      </span>
+    <span className={cn("inline-flex items-center", className)}>
+      <img
+        src="/images/logo-iw.webp"
+        alt="Innocent Watsala"
+        width={192}
+        height={192}
+        decoding="async"
+        className="h-10 w-10 shrink-0 rounded-full bg-white p-0.5 object-contain"
+      />
     </span>
   );
 }

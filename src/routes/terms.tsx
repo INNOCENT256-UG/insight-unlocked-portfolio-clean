@@ -4,7 +4,7 @@ import { LegalBody } from "@/components/LegalPage";
 import { PageHeader } from "@/components/PageHeader";
 import { absoluteUrl, socialMeta } from "@/lib/site";
 
-const title = "Terms & Conditions — Innocent, Data Analyst";
+const title = "Terms & Conditions — Innocent Watsala, Data Analyst";
 const description =
   "Terms of use for this portfolio: ownership of the work shown, how case study figures should be read, and the limits of what is offered here.";
 
@@ -30,7 +30,7 @@ function TermsPage() {
         description="The ground rules for using this portfolio and the material published on it."
       />
       <LegalBody
-        updated="6 September 2026"
+        updated="13 November 2026"
         sections={[
           {
             heading: "Purpose of this site",
@@ -46,9 +46,9 @@ function TermsPage() {
             heading: "Ownership",
             body: (
               <p>
-                The writing, layout, visuals and case study text on this site belong to Innocent.
-                You are welcome to read, quote briefly with credit, and link to any page. Republishing
-                pages wholesale, or presenting this work as your own, is not permitted.
+                The writing, layout, visuals and case study text on this site belong to Innocent
+                Watsala. You are welcome to read, quote briefly with credit, and link to any page.
+                Republishing pages wholesale, or presenting this work as your own, is not permitted.
               </p>
             ),
           },
@@ -84,7 +84,10 @@ function TermsPage() {
             heading: "Contacting",
             body: (
               <p>
-                Messages sent through the contact form are handled as described in the privacy policy.
+                The contact form validates your input in your browser and prepares a{" "}
+                <code>mailto:</code> email draft; it does not transmit messages through this
+                website. If you choose to send an email using your email client, your message is
+                handled as described in the privacy policy.
               </p>
             ),
           },

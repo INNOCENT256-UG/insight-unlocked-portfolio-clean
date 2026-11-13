@@ -4,9 +4,9 @@ import { LegalBody } from "@/components/LegalPage";
 import { PageHeader } from "@/components/PageHeader";
 import { absoluteUrl, socialMeta } from "@/lib/site";
 
-const title = "Cookies Policy — Innocent, Data Analyst";
+const title = "Cookies & Storage Policy — Innocent Watsala, Data Analyst";
 const description =
-  "This portfolio sets no tracking or advertising cookies and runs no analytics scripts. Here is exactly what that means.";
+  "This portfolio sets no tracking or advertising cookies and runs no analytics scripts. Essential browser storage is used only to remember your privacy notice preference.";
 
 export const Route = createFileRoute("/cookies")({
   head: () => ({
@@ -26,39 +26,42 @@ function CookiesPage() {
     <>
       <PageHeader
         eyebrow="Cookies"
-        title="Cookies Policy"
-        description="Short version: this site sets no tracking cookies, so there is no consent banner to click through."
+        title="Cookies & Storage Policy"
+        description="Short version: this site sets no tracking or advertising cookies and uses only minimal browser storage for your privacy notice preference."
       />
       <LegalBody
-        updated="6 September 2026"
+        updated="13 November 2026"
         sections={[
           {
             heading: "Cookies used on this site",
             body: (
               <p>
-                None for tracking, advertising or analytics. No cookie is written to identify you,
-                remember you between visits, or measure your behaviour across pages.
+                None for tracking, advertising or analytics. Application code sets no HTTP cookies to
+                identify you, profile your visits, or measure your behaviour across pages.
               </p>
             ),
           },
           {
-            heading: "Why there is no consent banner",
+            heading: "Essential browser storage",
             body: (
               <p>
-                Consent banners exist because sites store information that is not strictly necessary.
-                This portfolio stores nothing of that kind, so asking for permission would be a
-                banner with nothing behind it.
+                When you dismiss the privacy notice banner, your browser stores a single preference
+                key (<code>privacy-notice-dismissed-v1</code>) in <code>localStorage</code> so the
+                banner does not reappear on every page load. You can reopen the notice anytime from
+                &ldquo;Privacy Notice&rdquo; in the footer, or clear it via your browser&apos;s site
+                data settings.
               </p>
             ),
           },
           {
-            heading: "Third-party content",
+            heading: "Third-party content and external requests",
             body: (
               <p>
-                Pages here do not embed videos, maps, chat widgets, comment systems or social feeds,
-                which are the usual sources of third-party cookies. Web fonts are loaded from Google
-                Fonts, which serves the font files and sets no cookies for that request. Links to
-                GitHub or LinkedIn only set cookies once you are on those sites.
+                Pages here do not embed videos, maps, chat widgets, comment systems or social feeds.
+                Web fonts are loaded from Google Fonts, which receives standard HTTP request metadata
+                (such as your IP address and browser headers) to deliver font files under
+                Google&apos;s own privacy practices. Outbound links to GitHub lead to external
+                services with their own privacy and cookie policies.
               </p>
             ),
           },
