@@ -1,6 +1,12 @@
 import { Link } from "@tanstack/react-router";
 import { Mail } from "lucide-react";
 import { profile } from "@/data/profile";
+import {
+  PROFILE_IMAGE_ALT,
+  PROFILE_IMAGE_HEIGHT,
+  PROFILE_IMAGE_PATH,
+  PROFILE_IMAGE_WIDTH,
+} from "@/lib/site";
 import { GitHubLogo } from "./TechIcons";
 
 const nav = [
@@ -32,9 +38,12 @@ export function Footer() {
         <div className="sm:col-span-2 lg:col-span-1">
           <div className="flex items-center gap-4">
             <img
-              src="/images/innocent-portrait.jpg"
-              alt="Innocent Watsala"
+              src={PROFILE_IMAGE_PATH}
+              alt={PROFILE_IMAGE_ALT}
+              width={PROFILE_IMAGE_WIDTH}
+              height={PROFILE_IMAGE_HEIGHT}
               loading="lazy"
+              decoding="async"
               className="h-14 w-14 shrink-0 rounded-full border border-[var(--header-border)] object-cover object-top"
             />
             <div>

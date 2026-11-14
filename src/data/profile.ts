@@ -2,12 +2,12 @@
 export const profile = {
   name: "Innocent Watsala",
   role: "Data Analyst",
-  tagline: "Turning complex data into clear, actionable insights.",
+  tagline: "Turning raw data into clear reporting, practical dashboards, and informed business decisions.",
   disciplines: [
     "Data Analytics",
     "Business Intelligence",
-    "AI",
-    "Intelligent Automation",
+    "Reporting & Dashboards",
+    "AI-Assisted Web Development",
   ],
   intro:
     "I use data analysis, business intelligence, Python, SQL, Excel, and Power BI to turn raw data into clear insights. My work focuses on data preparation, analysis, reporting, and visualisation, with an interest in applying AI and automation to improve analytical workflows.",
@@ -34,9 +34,9 @@ export const whatIDo = [
 ];
 
 export const aboutStory = [
-  "My focus is data analytics: understanding business questions and using evidence to develop useful answers. I work with data preparation, exploration, and visualisation to make information easier to interpret and use.",
+  "My focus is data analytics: understanding business questions and using evidence to develop useful answers. I work with data preparation, exploration, and data visualization to make information easier to interpret and use.",
   "My experience in operational environments has shaped my understanding of how data is collected and used in day-to-day work. It has also made me attentive to data quality, practical reporting needs, and the importance of presenting information clearly.",
-  "I continue to develop my skills in SQL, Python, Excel, Power BI, analytical thinking, and dashboard design. I am also exploring how AI and automation can support more efficient reporting workflows.",
+  "I continue to develop my skills across SQL, Python, Pandas, Excel, Power BI, and Tableau, alongside analytical thinking and dashboard design. I am also exploring how AI and automation can support more efficient reporting and business intelligence workflows.",
 ];
 
 export const resumeVersions = [

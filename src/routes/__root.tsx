@@ -15,7 +15,6 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 
 import { jsonLdScript, organizationSchema, personSchema, websiteSchema } from "@/lib/structured-data";
-import { SITE_URL, SOCIAL_IMAGE_URL } from "@/lib/site";
 import { PrivacyNotice } from "@/components/PrivacyNotice";
 
 function NotFoundComponent() {
@@ -86,28 +85,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "google-site-verification", content: "QGY3L7bfftwUtg0iCe_0zv3ClYtBxgbUIiowQahepU8" },
-      { title: "Innocent Watsala — Data Analyst Portfolio" },
-      {
-        name: "description",
-        content:
-          "Portfolio of Innocent Watsala, a Data Analyst specializing in Data Analytics, Business Intelligence, Python, SQL, Excel, Power BI, AI, and Intelligent Automation.",
-      },
       { name: "author", content: "Innocent Watsala" },
-      { property: "og:title", content: "Innocent Watsala — Data Analyst Portfolio" },
-      {
-        property: "og:description",
-        content:
-          "Data Analytics • Business Intelligence • Python • SQL • Excel • Power BI • AI • Automation",
-      },
-      { property: "og:type", content: "website" },
-      { property: "og:site_name", content: "Innocent Watsala" },
-      { property: "og:url", content: SITE_URL },
-      { property: "og:image", content: SOCIAL_IMAGE_URL },
-      { property: "og:image:width", content: "1200" },
-      { property: "og:image:height", content: "630" },
-      { property: "og:image:alt", content: "Innocent Watsala — Data Analyst" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: SOCIAL_IMAGE_URL },
     ],
     scripts: [
       jsonLdScript(personSchema),

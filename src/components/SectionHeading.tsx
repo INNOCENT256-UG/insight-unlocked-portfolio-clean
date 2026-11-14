@@ -19,11 +19,11 @@ export function SectionHeading({ eyebrow, title, description, className, align =
         <span aria-hidden="true" className="inline-block h-px w-8 bg-signal" />
         {eyebrow}
       </p>
-      <h2 id={id} className="mt-4 text-3xl leading-tight sm:text-4xl">
+      <h2 id={id} className="mt-3 text-3xl leading-tight sm:text-4xl">
         {title}
       </h2>
       {description ? (
-        <p className="mt-4 text-base leading-relaxed text-muted-foreground">{description}</p>
+        <p className="mt-2.5 text-base leading-relaxed text-muted-foreground">{description}</p>
       ) : null}
     </Reveal>
   );

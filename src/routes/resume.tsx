@@ -35,8 +35,8 @@ function ResumePage() {
       <div className="mx-auto max-w-5xl px-5 py-10 sm:px-8 lg:py-14">
         <ResumeHeader />
 
-        <div className="resume-layout mt-9 grid items-start gap-x-10 gap-y-8 lg:grid-cols-[minmax(0,1.4fr)_minmax(16rem,0.8fr)]">
-          <div className="space-y-9">
+        <div className="resume-layout mt-8 grid items-start gap-x-10 gap-y-8 lg:grid-cols-[minmax(0,1.4fr)_minmax(16rem,0.8fr)]">
+          <div className="space-y-8">
             <ResumeSection label="Profile" title="Professional summary">
               <div className="max-w-3xl space-y-4 text-base leading-relaxed text-muted-foreground">
                 {professionalSummary.map((p) => (
@@ -54,7 +54,7 @@ function ResumePage() {
             </ResumeSection>
           </div>
 
-          <aside className="space-y-12">
+          <aside className="space-y-8">
             {education.length > 0 || certifications.length > 0 ? (
               <ResumeSection label="Credentials" title="Education & certifications">
                 <div className="grid gap-8 md:grid-cols-2">

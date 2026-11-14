@@ -1,28 +1,34 @@
 import { profile } from "@/data/profile";
-import { absoluteUrl, SITE_URL } from "@/lib/site";
+import { absoluteUrl, PROFILE_IMAGE_PATH, SITE_URL } from "@/lib/site";
 
-export const SITE_NAME = "Innocent — Data Analyst Portfolio";
+export const SITE_NAME = "Innocent Watsala — Data Analyst Portfolio";
 
 export const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
   "@id": `${SITE_URL}/#person`,
   name: profile.name,
+  alternateName: ["Innocent"],
   jobTitle: profile.role,
-  description: profile.intro,
-  image: absoluteUrl("/images/innocent-portrait.jpg"),
+  url: SITE_URL,
+  image: absoluteUrl(PROFILE_IMAGE_PATH),
+  email: profile.links.email.href,
+  description:
+    "Data Analyst turning raw data into meaningful insights, practical dashboards, and clearer business decisions using Python, SQL, Excel, and Power BI.",
   sameAs: [profile.links.github.href],
   knowsAbout: [
     "Data Analytics",
     "Business Intelligence",
     "Python",
     "SQL",
+    "PostgreSQL",
+    "MySQL",
     "Excel",
     "Power BI",
-    "Artificial Intelligence",
-    "Intelligent Automation",
+    "Tableau",
+    "Pandas",
+    "Automation",
   ],
-  url: SITE_URL,
 };
 
 export const organizationSchema = {

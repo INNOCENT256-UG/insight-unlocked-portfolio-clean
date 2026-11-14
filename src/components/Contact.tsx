@@ -87,7 +87,7 @@ export function Contact({ heading = true }: { heading?: boolean }) {
             id="contact-title"
             eyebrow="Contact"
             title="Let's turn data into something useful."
-            description="Open to data analytics, business intelligence and reporting roles, as well as analysis and dashboard work."
+            description="Open to junior data analytics, business intelligence, and reporting roles, as well as selected AI-assisted website development projects."
           />
         ) : null}
 

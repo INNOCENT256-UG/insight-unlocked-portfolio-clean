@@ -1,6 +1,12 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { aboutStory, whatIDo } from "@/data/profile";
+import {
+  PROFILE_IMAGE_ALT,
+  PROFILE_IMAGE_HEIGHT,
+  PROFILE_IMAGE_PATH,
+  PROFILE_IMAGE_WIDTH,
+} from "@/lib/site";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 
@@ -46,7 +52,7 @@ export function About({
           description="I focus on turning business questions into clear analysis, useful reporting, and better-informed decisions."
         />
 
-        <div className="mt-7 grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:gap-12">
+        <div className="mt-7 grid items-start gap-8 lg:grid-cols-[1.25fr_0.75fr] lg:gap-12">
           <Reveal>
             <div className="space-y-4">
               {aboutStory.map((paragraph, index) => (
@@ -61,23 +67,46 @@ export function About({
           </Reveal>
 
           <Reveal delay={100}>
-            <div className="border-t border-border pt-5 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
-              <p className="rule-label">Areas of focus</p>
-
-              <ul className="mt-4 divide-y divide-border/70 border-b border-border/70">
-                {whatIDo.map((item) => (
-                  <li
-                    key={item}
-                    className="flex items-center justify-between py-2.5 text-sm font-medium text-foreground"
-                  >
-                    <span>{item}</span>
-                    <span aria-hidden="true" className="h-1.5 w-1.5 bg-signal" />
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <figure className="mx-auto max-w-xs border-t border-border pt-5 lg:mx-0 lg:max-w-none lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+              <div className="overflow-hidden rounded-xl border border-border bg-muted/20 shadow-sm">
+                <img
+                  src={PROFILE_IMAGE_PATH}
+                  alt={PROFILE_IMAGE_ALT}
+                  width={PROFILE_IMAGE_WIDTH}
+                  height={PROFILE_IMAGE_HEIGHT}
+                  loading="lazy"
+                  decoding="async"
+                  className="aspect-[1435/1096] w-full object-cover object-top"
+                />
+              </div>
+              <figcaption className="mt-3.5 border-l-2 border-signal pl-3">
+                <p className="font-display text-lg font-semibold leading-tight text-foreground">
+                  Innocent Watsala
+                </p>
+                <p className="mt-0.5 font-mono text-[11px] uppercase tracking-[0.16em] text-signal">
+                  Data Analyst
+                </p>
+              </figcaption>
+            </figure>
           </Reveal>
         </div>
+
+        <Reveal delay={120}>
+          <div className="mt-8 border-t border-border pt-5">
+            <p className="rule-label">Areas of focus</p>
+            <ul className="mt-3 flex flex-wrap items-center gap-x-6 gap-y-2.5">
+              {whatIDo.map((item) => (
+                <li
+                  key={item}
+                  className="inline-flex items-center gap-2 text-sm font-medium text-foreground"
+                >
+                  <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 bg-signal" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Reveal>
 
         {showApproach ? (
           <Reveal delay={120}>

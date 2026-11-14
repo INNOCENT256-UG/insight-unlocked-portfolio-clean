@@ -2,6 +2,7 @@ import {
   BarChart3,
   Bot,
   Database,
+  Globe,
   LineChart,
   Wrench,
   type LucideIcon,
@@ -42,7 +43,7 @@ export const skillGroups: SkillGroup[] = [
     title: "Business Intelligence",
     icon: BarChart3,
     note: "Reporting people actually use to decide.",
-    items: ["Power BI", "Excel", "Dashboards", "KPI Analysis", "Business Reporting"],
+    items: ["Power BI", "Tableau", "Excel", "Dashboards", "KPI Analysis", "Business Reporting"],
   },
   {
     id: "ai",
@@ -63,6 +64,13 @@ export const skillGroups: SkillGroup[] = [
     icon: Wrench,
     note: "The everyday working environment.",
     items: ["Git", "GitHub", "VS Code", "Docker", "Jupyter"],
+  },
+  {
+    id: "web",
+    title: "AI-Assisted Web Development",
+    icon: Globe,
+    note: "Secondary service: clean, responsive portfolio and business websites.",
+    items: ["React", "TypeScript", "Tailwind CSS", "Responsive Design", "Technical SEO"],
   },
 ];
 

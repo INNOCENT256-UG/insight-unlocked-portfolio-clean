@@ -26,15 +26,15 @@ export function Hero() {
           className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#0B121C]/95 via-[#0B121C]/80 to-[#0B121C]/20 lg:via-[#0B121C]/65 lg:to-transparent"
         />
 
-        <div className="relative mx-auto max-w-6xl px-5 py-12 sm:px-8 sm:py-14 lg:py-16">
+        <div className="relative mx-auto max-w-6xl px-5 py-9 sm:px-8 sm:py-11 lg:py-12">
           <div className="max-w-xl">
             <Reveal>
               <p className="font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-[#2DD4BF]">
-                Data Analyst | Business Intelligence | Automation
+                Innocent Watsala · Data Analytics · Business Intelligence · Reporting
               </p>
               <h1
                 id="hero-title"
-                className="mt-3 font-display text-[clamp(2.1rem,4.2vw,3.15rem)] leading-[1.08] tracking-tight text-white"
+                className="mt-2.5 font-display text-[clamp(2rem,3.9vw,2.95rem)] leading-[1.08] tracking-tight text-white"
               >
                 Making data make sense.{" "}
                 <span className="text-[#2DD4BF]">Turning insights into better decisions.</span>
@@ -42,14 +42,15 @@ export function Hero() {
             </Reveal>
 
             <Reveal delay={70}>
-              <p className="mt-4 max-w-[48ch] text-base leading-relaxed text-slate-300">
-                I work with Python, SQL, Excel, and Power BI to transform raw data into meaningful
-                insights, practical dashboards, and clearer business decisions.
+              <p className="mt-3.5 max-w-[50ch] text-base leading-relaxed text-slate-300">
+                I&apos;m Innocent Watsala, a Data Analyst focused on business intelligence, reporting,
+                and dashboards using Python, Pandas, SQL, Excel, Power BI, and Tableau — alongside
+                selected AI-assisted website development.
               </p>
             </Reveal>
 
             <Reveal delay={130}>
-              <div className="mt-6 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
+              <div className="mt-5 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
                 <Button asChild size="lg" className="rounded-sm px-6 cta-gradient sm:min-w-44">
                   <Link to="/projects">
                     Explore My Work <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -65,7 +66,7 @@ export function Hero() {
                 </Button>
               </div>
 
-              <div className="mt-5 flex flex-wrap items-center gap-6">
+              <div className="mt-4 flex flex-wrap items-center gap-6">
                 <a
                   href={profile.links.github.href}
                   target="_blank"
@@ -88,7 +89,7 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-6xl px-5 py-6 sm:px-8">
+      <div className="mx-auto max-w-6xl px-5 py-4 sm:px-8 sm:py-5">
         <Reveal delay={180}>
           <TechStrip className="border-t-0 pt-0" />
         </Reveal>

@@ -730,6 +730,112 @@ export const projects: Project[] = [
       },
     ],
   },
+  {
+    slug: "b2b-sales-intelligence-dashboard",
+    title: "B2B Sales & Invoice Intelligence Dashboard",
+    category: "Data Analytics",
+    problem:
+      "Raw B2B invoice-line records are difficult to inspect manually, leaving commercial and operations teams without clear visibility into revenue, cost, gross margin, customer contribution, product mix, and order-to-ship turnaround.",
+    tools: [
+      "Business Intelligence",
+      "Data Visualization",
+      "KPI Design",
+      "Data Validation",
+      "Interactive Reporting",
+    ],
+    summary:
+      "Transformed 8,000 cleaned B2B invoice-line records across 584 distinct invoices, 308 customers, and 160 products into a five-view executive sales intelligence dashboard covering revenue, gross profit, margin, and shipping performance.",
+    insight:
+      "Across 88,309 units sold, total revenue reached $4,122,067.37 against $2,922,989.00 in cost — yielding $1,199,078.37 in gross profit (29.09% gross margin) while surfacing top customer and product profit drivers alongside invoice-level shipping durations.",
+    outcome:
+      "Delivered a stakeholder-ready five-section BI dashboard (Overview, Sales Performance, Customers, Products, and Orders & Shipping) backed by validated KPI formulas and transparent documentation of prototype scope and limitations.",
+    metrics: [
+      { label: "Invoice-line records", value: "8,000" },
+      { label: "Tracked revenue", value: "$4.12M" },
+      { label: "Gross margin", value: "29.09%" },
+    ],
+    links: {
+      github: "https://github.com/INNOCENT256-UG/B2B-SALES---INVOICES",
+    },
+    cover: {
+      src: "/images/projects/b2b-sales-intelligence-dashboard/overview.png",
+      width: 1301,
+      height: 638,
+      alt: "B2B Sales Intelligence Dashboard Overview showing headline KPIs for revenue, cost, gross profit, margin, distinct invoices, customers, products, and category-level performance.",
+      caption: "Executive overview: headline commercial KPIs and category-level summary.",
+    },
+    gallery: [
+      {
+        src: "/images/projects/b2b-sales-intelligence-dashboard/sales-performance.png",
+        width: 1279,
+        height: 510,
+        alt: "Sales Performance view tracking daily and weekly revenue, cost, gross profit, and gross margin trends over time.",
+        caption: "Daily and weekly revenue, cost, and gross margin performance trends.",
+        section: "Analysis",
+      },
+      {
+        src: "/images/projects/b2b-sales-intelligence-dashboard/customers.png",
+        width: 1307,
+        height: 473,
+        alt: "Customers view ranking top B2B accounts by revenue, gross profit, and profitability contribution.",
+        caption: "Customer account contribution and profitability comparison.",
+        section: "Analysis",
+      },
+      {
+        src: "/images/projects/b2b-sales-intelligence-dashboard/products.png",
+        width: 1300,
+        height: 392,
+        alt: "Products view breaking down product and category revenue, gross profit, and product mix.",
+        caption: "Product mix and top-performing items by revenue and gross profit.",
+        section: "Insights",
+      },
+      {
+        src: "/images/projects/b2b-sales-intelligence-dashboard/orders-shipping.png",
+        width: 1294,
+        height: 527,
+        alt: "Orders and Shipping view analyzing order date versus ship date and invoice-level shipping duration distribution.",
+        caption: "Order-to-ship fulfillment duration and shipping day distribution.",
+        section: "Insights",
+      },
+    ],
+    caseStudy: [
+      {
+        heading: "Problem",
+        body: [
+          "Commercial and operations teams rarely suffer from a lack of data — they suffer from a lack of clarity. Raw transactional invoice rows make it slow to answer basic leadership questions around revenue, margin, account contribution, and fulfillment speed.",
+          "The objective was a single, stakeholder-friendly business intelligence dashboard summarizing commercial performance without forcing users to audit raw spreadsheets.",
+        ],
+      },
+      {
+        heading: "Data",
+        body: [
+          "Built from a cleaned B2B invoice dataset containing 8,000 invoice-line records, 584 distinct invoices, 308 distinct customers, 160 distinct products, and 88,309 units sold.",
+          "Every headline figure was validated directly against the source records before visualization.",
+        ],
+      },
+      {
+        heading: "Process",
+        body: [
+          "Defined explicit commercial KPI logic across all views: Revenue (sum of revenue), Cost (sum of cost), Gross Profit (Revenue − Cost), Gross Margin % (GP ÷ Revenue × 100), distinct entity counts, and Average Revenue per Invoice.",
+          "Structured the interactive HTML dashboard (REPORTS/index.html) into five focused views — Overview, Sales Performance, Customers, Products, and Orders & Shipping — paired with an FAQ documenting metric definitions and limitations.",
+        ],
+      },
+      {
+        heading: "Analysis",
+        body: [
+          "Validated dataset-wide totals of $4,122,067.37 in revenue, $2,922,989.00 in cost, and $1,199,078.37 in gross profit (29.09% gross margin).",
+          "Segmented performance over daily and weekly intervals, ranked top customers and products by revenue and gross profit contribution, and measured order-date-to-ship-date turnaround across invoices.",
+        ],
+      },
+      {
+        heading: "Outcome",
+        body: [
+          "Delivered a self-contained executive sales intelligence prototype demonstrating KPI governance, data validation, commercial storytelling, and operational fulfillment tracking.",
+          "Scope & limitations: built as a static portfolio prototype with embedded data and a limited date range rather than a live database-connected reporting platform; future steps include automated refresh pipelines and live API/source integration.",
+        ],
+      },
+    ],
+  },
 ];
 
 export const projectCategories: Array<"All" | ProjectCategory> = [

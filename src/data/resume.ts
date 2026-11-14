@@ -7,8 +7,8 @@
 export const resumeHeader = {
   name: "Innocent Watsala",
   role: "Data Analyst",
-  disciplines: "Business Intelligence • Data Analytics • AI",
-  statement: "Turning complex data into clear, actionable insights.",
+  disciplines: "Data Analytics • Business Intelligence • Reporting & Dashboards",
+  statement: "Turning raw data into clear reporting, practical dashboards, and informed business decisions.",
 };
 
 export const professionalSummary = [
