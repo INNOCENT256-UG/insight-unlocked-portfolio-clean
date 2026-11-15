@@ -30,7 +30,11 @@ function ContactPage() {
     <>
       <PageHeader
         eyebrow="Contact"
-        title="Let's turn data into something useful."
+        title={
+          <>
+            Let&apos;s turn data into <span className="text-signal">something useful.</span>
+          </>
+        }
         description="Open to data analytics, business intelligence and reporting opportunities."
       />
       <Contact heading={false} />

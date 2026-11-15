@@ -190,6 +190,21 @@
   }
 }
 
+@utility site-container {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 77.5rem;
+  padding-inline: 1.25rem;
+
+  @media (min-width: 640px) {
+    padding-inline: 1.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    padding-inline: 2rem;
+  }
+}
+
 @utility grid-canvas {
   background-image:
     linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
@@ -388,7 +403,8 @@
     background: #fff !important;
   }
 
-  .resume-page .mx-auto {
+  .resume-page .mx-auto,
+  .resume-page .site-container {
     max-width: none !important;
     padding: 0 !important;
   }

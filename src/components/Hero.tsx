@@ -26,8 +26,8 @@ export function Hero() {
           className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#0B121C]/95 via-[#0B121C]/80 to-[#0B121C]/20 lg:via-[#0B121C]/65 lg:to-transparent"
         />
 
-        <div className="relative mx-auto max-w-6xl px-5 py-9 sm:px-8 sm:py-11 lg:py-12">
-          <div className="max-w-xl">
+        <div className="relative site-container py-9 sm:py-11 lg:py-14">
+          <div className="max-w-2xl">
             <Reveal>
               <p className="font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-[#2DD4BF]">
                 Innocent Watsala · Data Analytics · Business Intelligence · Reporting
@@ -42,7 +42,7 @@ export function Hero() {
             </Reveal>
 
             <Reveal delay={70}>
-              <p className="mt-3.5 max-w-[50ch] text-base leading-relaxed text-slate-300">
+              <p className="mt-3.5 max-w-[54ch] text-base leading-relaxed text-slate-300">
                 I&apos;m Innocent Watsala, a Data Analyst focused on business intelligence, reporting,
                 and dashboards using Python, Pandas, SQL, Excel, Power BI, and Tableau — alongside
                 selected AI-assisted website development.
@@ -89,7 +89,7 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-6xl px-5 py-4 sm:px-8 sm:py-5">
+      <div className="site-container py-4 sm:py-5">
         <Reveal delay={180}>
           <TechStrip className="border-t-0 pt-0" />
         </Reveal>

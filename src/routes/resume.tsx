@@ -32,10 +32,10 @@ export const Route = createFileRoute("/resume")({
 function ResumePage() {
   return (
     <div className="resume-page">
-      <div className="mx-auto max-w-5xl px-5 py-10 sm:px-8 lg:py-14">
+      <div className="site-container py-10 lg:py-14">
         <ResumeHeader />
 
-        <div className="resume-layout mt-8 grid items-start gap-x-10 gap-y-8 lg:grid-cols-[minmax(0,1.4fr)_minmax(16rem,0.8fr)]">
+        <div className="resume-layout mt-8 grid items-start gap-x-10 gap-y-8 lg:grid-cols-[minmax(0,1.45fr)_minmax(18rem,0.85fr)]">
           <div className="space-y-8">
             <ResumeSection label="Profile" title="Professional summary">
               <div className="max-w-3xl space-y-4 text-base leading-relaxed text-muted-foreground">

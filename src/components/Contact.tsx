@@ -81,12 +81,16 @@ export function Contact({ heading = true }: { heading?: boolean }) {
       aria-label={heading ? undefined : "Contact details and message form"}
       className="border-b border-border"
     >
-      <div className={cn("mx-auto max-w-6xl px-5 sm:px-8", heading ? "py-10 sm:py-12 lg:py-14" : "py-8 lg:py-10")}>
+      <div className={cn("site-container", heading ? "py-10 sm:py-12 lg:py-14" : "py-8 lg:py-10")}>
         {heading ? (
           <SectionHeading
             id="contact-title"
             eyebrow="Contact"
-            title="Let's turn data into something useful."
+            title={
+              <>
+                Let&apos;s turn data into <span className="text-signal">something useful.</span>
+              </>
+            }
             description="Open to junior data analytics, business intelligence, and reporting roles, as well as selected AI-assisted website development projects."
           />
         ) : null}

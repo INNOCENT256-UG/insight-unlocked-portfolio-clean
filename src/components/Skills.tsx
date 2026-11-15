@@ -11,12 +11,16 @@ export function Skills() {
       aria-labelledby="skills-title"
       className="border-b border-border bg-surface/60"
     >
-      <div className="mx-auto max-w-6xl px-5 py-10 sm:px-8 sm:py-12">
+      <div className="site-container py-10 sm:py-12 lg:py-14">
         <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
           <SectionHeading
             id="skills-title"
             eyebrow="Skills"
-            title="The analytical toolkit"
+            title={
+              <>
+                The <span className="text-signal">analytical</span> toolkit
+              </>
+            }
             description="Grouped by the part of the workflow they belong to — from raw extraction to the report someone reads."
           />
           <Reveal delay={60} className="shrink-0">

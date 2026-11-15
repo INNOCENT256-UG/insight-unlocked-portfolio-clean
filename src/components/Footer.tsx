@@ -34,7 +34,7 @@ export function Footer() {
       data-site-footer
       className="border-t border-[var(--header-border)] bg-[var(--header)] text-[var(--header-foreground)]"
     >
-      <div className="mx-auto grid max-w-6xl items-start gap-10 px-5 py-12 sm:grid-cols-2 sm:px-8 lg:grid-cols-[1.6fr_1fr_1fr] lg:gap-12">
+      <div className="site-container grid items-start gap-10 py-12 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr] lg:gap-12">
         <div className="sm:col-span-2 lg:col-span-1">
           <div className="flex items-center gap-4">
             <img
@@ -114,7 +114,7 @@ export function Footer() {
       </div>
 
       <div className="border-t border-[var(--header-border)]">
-        <div className="mx-auto flex max-w-6xl flex-col gap-4 px-5 py-6 text-xs text-[var(--header-muted)] sm:flex-row sm:items-center sm:justify-between sm:px-8">
+        <div className="site-container flex flex-col gap-4 py-6 text-xs text-[var(--header-muted)] sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} Innocent Watsala. All rights reserved.</p>
 
           <nav aria-label="Legal">

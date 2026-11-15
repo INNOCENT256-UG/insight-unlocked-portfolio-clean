@@ -46,7 +46,7 @@ export function Navbar() {
         scrolled && "shadow-md shadow-black/15",
       )}
     >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-8">
+      <div className="site-container flex h-16 items-center justify-between">
         <Link
           to="/"
           className="group rounded-md outline-none focus-visible:ring-2 focus-visible:ring-[var(--signal-bright)] focus-visible:ring-offset-4 focus-visible:ring-offset-[var(--header)]"
@@ -111,7 +111,7 @@ export function Navbar() {
           id="mobile-nav"
           className="border-t border-[var(--header-border)] bg-[var(--header)] text-[var(--header-foreground)] lg:hidden"
         >
-          <nav aria-label="Mobile" className="mx-auto flex max-w-6xl flex-col px-5 py-3 sm:px-8">
+          <nav aria-label="Mobile" className="site-container flex flex-col py-3">
             {navItems.map((item) => (
               <Link
                 key={item.to}

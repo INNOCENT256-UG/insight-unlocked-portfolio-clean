@@ -44,17 +44,21 @@ export function About({
       aria-labelledby="about-title"
       className="border-b border-border"
     >
-      <div className="mx-auto max-w-6xl px-5 py-10 sm:px-8 sm:py-12">
+      <div className="site-container py-10 sm:py-12 lg:py-14">
         <SectionHeading
           id="about-title"
           eyebrow="About"
-          title="Analytical thinking, practical outcomes"
+          title={
+            <>
+              Analytical thinking, <span className="text-signal">practical outcomes</span>
+            </>
+          }
           description="I focus on turning business questions into clear analysis, useful reporting, and better-informed decisions."
         />
 
-        <div className="mt-7 grid items-start gap-8 lg:grid-cols-[1.25fr_0.75fr] lg:gap-12">
+        <div className="mt-7 grid items-start gap-8 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,0.75fr)] lg:gap-12">
           <Reveal>
-            <div className="space-y-4">
+            <div className="max-w-[66ch] space-y-4">
               {aboutStory.map((paragraph, index) => (
                 <p
                   key={index}

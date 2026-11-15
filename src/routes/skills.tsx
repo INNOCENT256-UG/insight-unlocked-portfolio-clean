@@ -30,7 +30,11 @@ function SkillsPage() {
     <>
       <PageHeader
         eyebrow="Skills"
-        title="Tools chosen for the question, not the trend"
+        title={
+          <>
+            Tools chosen for the <span className="text-signal">question</span>, not the trend
+          </>
+        }
         description="Grouped by where they sit in the analytics workflow — extraction, analysis, reporting and automation."
       />
       <Skills />

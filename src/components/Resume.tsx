@@ -22,7 +22,7 @@ export function Resume() {
       aria-labelledby="resume-title"
       className="border-b border-border bg-surface"
     >
-      <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8 sm:py-16 lg:py-18">
+      <div className="site-container py-14 sm:py-16 lg:py-18">
         <SectionHeading
           eyebrow="Professional Profile"
           title="Experience and career focus"

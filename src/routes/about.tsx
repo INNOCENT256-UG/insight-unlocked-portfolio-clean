@@ -30,7 +30,11 @@ function AboutPage() {
     <>
       <PageHeader
         eyebrow="About"
-        title="Data, in service of decisions"
+        title={
+          <>
+            Data, in service of <span className="text-signal">decisions</span>
+          </>
+        }
         description="A short professional story: where the focus is now, and how it got there."
       />
       <About withCta showApproach />

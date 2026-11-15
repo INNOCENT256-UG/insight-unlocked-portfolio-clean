@@ -30,7 +30,11 @@ function ProjectsPage() {
     <>
       <PageHeader
         eyebrow="Projects"
-        title="Analytical work, explained end to end"
+        title={
+          <>
+            Analytical work, explained <span className="text-signal">end to end</span>
+          </>
+        }
         description="Problem → Data → Process → Analysis → Insights → Outcome. Every case study follows the same structure."
       />
       <Projects heading={false} />

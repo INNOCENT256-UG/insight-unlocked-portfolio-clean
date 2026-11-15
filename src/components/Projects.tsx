@@ -25,13 +25,23 @@ export function Projects({ limit, heading = true }: { limit?: number; heading?: 
       aria-label={heading ? undefined : "Project case studies"}
       className="border-b border-border"
     >
-      <div className={cn("mx-auto max-w-6xl px-5 sm:px-8", heading ? "py-10 sm:py-12 lg:py-14" : "py-8 lg:py-10")}>
+      <div className={cn("site-container", heading ? "py-10 sm:py-12 lg:py-14" : "py-8 lg:py-10")}>
         {heading ? (
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <SectionHeading
               id="projects-title"
               eyebrow="Projects"
-              title={isPreview ? "Selected case studies" : "Case studies"}
+              title={
+                isPreview ? (
+                  <>
+                    Selected <span className="text-signal">case studies</span>
+                  </>
+                ) : (
+                  <>
+                    Case <span className="text-signal">studies</span>
+                  </>
+                )
+              }
               description="Each project is framed around the business problem, the data behind it, and what the analysis made possible."
             />
             {isPreview ? (

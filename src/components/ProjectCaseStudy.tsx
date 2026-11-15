@@ -106,7 +106,7 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
       {/* Project header */}
       <header className="relative overflow-hidden border-b border-border">
         <div aria-hidden="true" className="grid-canvas pointer-events-none absolute inset-0 [mask-image:linear-gradient(to_bottom,black,transparent_85%)]" />
-        <div className="relative mx-auto max-w-6xl px-5 pt-8 pb-10 sm:px-8 sm:pt-10 lg:pb-12">
+        <div className="relative site-container pt-8 pb-10 sm:pt-10 lg:pb-12">
           <Link
             to="/projects"
             className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
@@ -165,7 +165,7 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
         </div>
       </header>
 
-      <div className="mx-auto max-w-6xl px-5 py-10 sm:px-8 lg:py-12">
+      <div className="site-container py-10 lg:py-12">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_18rem] lg:gap-12">
           {/* Main column */}
           <div className="min-w-0">
